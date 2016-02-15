@@ -1,5 +1,5 @@
 <?php
-$config['base_url'] = 'AMASA/administration/';
+$config['base_url'] = 'AMASA/';
 $config['project'] = 'AMASA';
 $config['admins'] = array();
 $config['default_controller'] = 'main';
