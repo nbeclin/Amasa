@@ -12,16 +12,32 @@ class Pages extends Controller {
     function index($action=false, $sub_param=false){
     	switch ($action){
     		case 'association':
-    			$template = $this->loadView('front/pages/commun');
-		        $template->set('static', $this->staticFiles);
-		        $template->set('nav', 'main');
-       			$template->addCss('style', 'css');
+                $this->proceed(1);
+                break;
 
-		        $pages = $this->loadModel('Page_all');
-                $template->set('pages', $pages->all);
-            	$template->set('info_page', $pages->load_one(1, 'page'));
-            	$template->render();
-    			break;
+            case 'bureau':
+                $this->proceed(3);
+                break;
+
+            case 'condAdoption':
+                $this->proceed(4);
+                break;
+
+            case 'devFamille':
+                $this->proceed(5);
+                break;
+
+            case 'adherer':
+                $this->proceed(6);
+                break;
+
+            case 'don':
+                $this->proceed(7);
+                break;
+
+            case 'parrainer':
+                $this->proceed(8);
+                break;
 
     		default:
     		$template = $this->loadView('error404');
@@ -31,5 +47,17 @@ class Pages extends Controller {
 	        $template->set('nav', null);
 	        $template->render();
     	}
+    }
+
+    private function proceed($idPage){
+        $this->template = $this->loadView('front/pages/commun');
+        $this->template->set('static', $this->staticFiles);
+        $this->template->set('nav', 'main');
+        $this->template->addCss('style', 'css');
+
+        $pages = $this->loadModel('Page_all');
+        $this->template->set('pages', $pages->all);
+        $this->template->set('info_page', $pages->load_one($idPage, 'page'));
+        $this->template->render();
     }
 }

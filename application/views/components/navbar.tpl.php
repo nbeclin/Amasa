@@ -2,7 +2,7 @@
 	<li class="active 1-1"><a href="#" class=""><span class="gras">AMASA</span></a></li>
 		<li class="ss-bt 1-2"><a href="/<?php echo BASE_URL ?>pages/association">L'association</a></li>
 		<li class="ss-bt 1-2"><a href="/<?php echo BASE_URL ?>pages/bureau">Le bureau</a></li>
-	<li class="active 2-1"><a href="/<?php echo BASE_URL ?>condAdoption"><span class="gras">Conditions d'adoption</span></a></li>
+	<li class="active 2-1"><a href="/<?php echo BASE_URL ?>pages/condAdoption"><span class="gras">Conditions d'adoption</span></a></li>
 	<li class="active 3-1"><a href="#"><span class="gras">Adoptions</span></a></li>
 		<li class="ss-bt 3-2"><a href="/<?php echo BASE_URL ?>pages/adoption/chat">Chats adultes</a></li>
 		<li class="ss-bt 3-2"><a href="/<?php echo BASE_URL ?>pages/adoption/chaton">Chatons</a></li>
