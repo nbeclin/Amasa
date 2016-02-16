@@ -19,6 +19,11 @@ class Page_all extends Model {
         return $page;
     }
 
+    public function load_one_by_label($label, $type){
+        $page = new Page($this->selectOne($type, '*', array('libelle' => $label, 'historique' => '0')));
+        return $page;
+    }
+
     public function register($post, $type){
         $label = $post['libelle'];
 
