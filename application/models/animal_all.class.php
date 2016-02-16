@@ -2,18 +2,26 @@
 class Animal_all extends Model {
 
     public $all = array();
-
+    
     public function __construct(){
         parent::__construct();
         $this->load_all();
     }
 
+    /** 
+    * Function load_all - load all animal
+    */
     private function load_all(){
-        foreach($this->selectAll('animal', '*', null, null, 4) as $animal){
+        foreach($this->selectAll('animal', '*') as $animal){
             array_push($this->all, new Animal($animal));
         }
     }
 
+    /** 
+    * Function tri 
+    * @param $post - searched values
+    * @return array of result
+    */
     public function tri($post){
         $result = array();
 
@@ -40,6 +48,11 @@ class Animal_all extends Model {
         return $result;
     }
 
+    /** 
+    * Function load_one
+    * @param $id - searched id
+    * @return array of result
+    */
     public function load_one($id){
         $animal = new Animal($this->selectOne('animal', '*', array('id' => $id)));
         $animal->age = $this->date_conversion_fr($animal->age);
@@ -47,6 +60,11 @@ class Animal_all extends Model {
         return $animal;
     }
 
+    /** 
+    * Function register
+    * @param $post - values ​​to add or change
+    * @return boolean 
+    */
     public function register($post){
         if($post['age'] == ''){
             $post['age'] = '0000-00-00';
@@ -96,11 +114,11 @@ class Animal_all extends Model {
         return true;
     }
 
-    private function date_converter($date){
-        $date = date_create_from_format('d/m/Y', $post['age']);
-        $post['age'] = date_format($date, 'Y-m-d');
-    }
-
+    /** 
+    * Function date_conversion_fr
+    * @param $dateToConvert - datetime format
+    * @return string - fr date format 
+    */
     private function date_conversion_fr($dateToConvert){
         if ($dateToConvert == '0000-00-00 00:00:00.0' || $dateToConvert == '0000-00-00' || $dateToConvert == ''){
             return null;
@@ -111,11 +129,21 @@ class Animal_all extends Model {
         }
     }
 
+    /** 
+    * Function date_conversion_datetime
+    * @param $dateToConvert - fr date format
+    * @return string - datetime format
+    */
     private function date_conversion_datetime($dateToConvert){
         $date = DateTime::createFromFormat('d/m/Y', $dateToConvert);
         return $date->format('Y-m-d');
     }
 
+    /** 
+    * Function clean_post
+    * @param $post - array of data
+    * @return array of cleaning data
+    */
     private function clean_post($post){
         unset($post['form_animal']);
         unset($post['id']);
@@ -123,6 +151,11 @@ class Animal_all extends Model {
         return $post;
     }
 
+    /** 
+    * Function clean_post_tri
+    * @param $post - array of data
+    * @return array of cleaning data
+    */
     private function clean_post_tri($post){
         foreach ($post as $key => $value) {
             if ($post[$key] == ''){
@@ -133,6 +166,12 @@ class Animal_all extends Model {
         return $post;
     }
 
+    /** 
+    * Function image_register - BDD register
+    * @param $idAnimal - id of animal
+    * @param $lien - name of image
+    * @param $premiere - position of image
+    */
     private function image_register($idAnimal, $lien, $premiere){
         $values = array(
                 'idAnimal' => $idAnimal,
@@ -143,20 +182,20 @@ class Animal_all extends Model {
         $this->insertOne('photo', $values);
     }
 
-/**
- * easy image resize function
- * @param  $file - file name to resize
- * @param  $string - The image data, as a string
- * @param  $width - new image width
- * @param  $height - new image height
- * @param  $proportional - keep image proportional, default is no
- * @param  $output - name of the new file (include path if needed)
- * @param  $delete_original - if true the original image will be deleted
- * @param  $use_linux_commands - if set to true will use "rm" to delete the image, if false will use PHP unlink
- * @param  $quality - enter 1-100 (100 is best quality) default is 100
- * @param  $cropFromTop - if false crop will be from center, if true crop will be from top
- * @return boolean|resource
- */
+    /**
+     * easy image resize function
+     * @param  $file - file name to resize
+     * @param  $string - The image data, as a string
+     * @param  $width - new image width
+     * @param  $height - new image height
+     * @param  $proportional - keep image proportional, default is no
+     * @param  $output - name of the new file (include path if needed)
+     * @param  $delete_original - if true the original image will be deleted
+     * @param  $use_linux_commands - if set to true will use "rm" to delete the image, if false will use PHP unlink
+     * @param  $quality - enter 1-100 (100 is best quality) default is 100
+     * @param  $cropFromTop - if false crop will be from center, if true crop will be from top
+     * @return boolean|resource
+     */
     private function smart_resize_image($file, $string = null, $width = 0, $height = 0, $proportional = false, $output = 'file', $delete_original = true, $use_linux_commands = false, $quality = 100, $cropFromTop = false) {
 
         if ( $height <= 0 && $width <= 0 ) {
