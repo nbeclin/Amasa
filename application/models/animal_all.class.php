@@ -19,9 +19,15 @@ class Animal_all extends Model {
 
         $post = $this->clean_post_tri($post);
 
+        $other = null;
+
+        if(isset($post['anneeAdoption'])){
+            $other = 'AND anneeAdoption LIKE "%'.$post['anneeAdoption'].'%"';
+            unset($post['anneeAdoption']);
+        }
 
         if (!empty($post)) {
-            foreach($this->selectAllLimit('animal', '*', $post) as $animal){
+            foreach($this->selectAllLimit('animal', '*', $post, $other) as $animal){
                 array_push($result, new Animal($animal));
             }
         }
@@ -66,13 +72,6 @@ class Animal_all extends Model {
         $image_out .= BASE_URL;
         $image_out .= 'application/img/maud2.jpg';
 
-        var_dump(getimagesize($image_selected));
-
-        $dest = $this->smart_resize_image($image_selected, null, 750, 500, true, $image_out, false, false, 50);
-
-        var_dump($dest);
-
-/*
         if($post['id'] != ''){
             $animal_id = $post['id'];
             $this->delete('photo', array('idAnimal' => $animal_id));
@@ -93,7 +92,7 @@ class Animal_all extends Model {
             if($value != ''){
                $this->image_register($animal_id, $value, $premiere);
             }
-        }*/
+        }
 
         return true;
     }
