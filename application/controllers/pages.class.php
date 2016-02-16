@@ -47,8 +47,8 @@ class Pages extends Controller {
                 $template->addCss('style', 'css');
 
                 $animaux = $this->loadModel('Animal_all');
-                $template->set('title', 'Adoptés en '.$sub_param);
-                $template->set('animaux', $animaux->tri(array('categorie' => 'adopte', 'anneeAdoption' => $sub_param)));
+                $template->set('title', 'Adoptés en '.$this->params[0]);
+                $template->set('animaux', $animaux->tri(array('categorie' => 'adopte', 'anneeAdoption' => $this->params[0])));
                 $template->set('cpt', 0);
 
                 $template->render();
@@ -60,21 +60,25 @@ class Pages extends Controller {
                 $template->set('nav', 'main');
                 $template->addCss('style', 'css');
 
-                switch ($sub_param){
+                switch ($this->params[0]){
                     case 'chat':
                         $categorie = 'adoptionChat';
+                        $title = 'Chats à l\'adoption';
                         break;
 
                     case 'chaton':
                         $categorie = 'adoptionChaton';
+                        $title = 'Chatons à l\'adoption';
                         break;
 
                     case 'chien':
                         $categorie = 'adoptionChien';
+                        $title = 'Chien à l\'adoption';
                         break;
                 }
 
                 $animaux = $this->loadModel('Animal_all');
+                $template->set('title', $title);
                 $template->set('animaux', $animaux->tri(array('categorie' => $categorie)));
 
                 $template->render();
