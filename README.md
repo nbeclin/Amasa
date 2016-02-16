@@ -2,6 +2,4 @@
 
 --
 
-### Instalation
-
 Site web association AMASA
