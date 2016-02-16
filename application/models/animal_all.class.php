@@ -9,7 +9,7 @@ class Animal_all extends Model {
     }
 
     private function load_all(){
-        foreach($this->selectAllLimit('animal', '*', null, null, 4) as $animal){
+        foreach($this->selectAll('animal', '*', null, null, 4) as $animal){
             array_push($this->all, new Animal($animal));
         }
     }
@@ -27,17 +27,16 @@ class Animal_all extends Model {
         }
 
         if (!empty($post)) {
-            foreach($this->selectAllLimit('animal', '*', $post, $other) as $animal){
+            foreach($this->selectAll('animal', '*', $post, $other) as $animal){
                 array_push($result, new Animal($animal));
             }
         }
         else {
-            foreach($this->selectAllLimit('animal', '*') as $animal){
+            foreach($this->selectAll('animal', '*') as $animal){
                 array_push($result, new Animal($animal));
             }
         }
 
-        
         return $result;
     }
 
