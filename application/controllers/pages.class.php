@@ -48,20 +48,12 @@ class Pages extends Controller {
                 
                 $animals = $this->loadModel('Animal_all');
 
-                if (isset($this->params[1]) && is_numeric($this->params[1])){
-                    $template->set('page', floor($this->params[1]));
-                    $page = $this->params[1];
-                }
-                else {
-                    $template->set('page', 1);
-                    $page = 1;
-                }
-
                 $template->set('title', 'Adoptés en '.$this->params[0]);
+                $template->set('page', $this->page_selected());
                 $template->set('selected', $animals->count_tri(array('categorie' => 'adopte', 'anneeAdoption' => $this->params[0])));
-                $template->set('year', $this->params[0]); 
-                $template->set('animals', $animals->tri(array('categorie' => 'adopte', 'anneeAdoption' => $this->params[0]), $page));
+                $template->set('year', $this->params[0]);
                 $template->set('cpt', 0);
+                $template->set('animals', $animals->tri(array('categorie' => 'adopte', 'anneeAdoption' => $this->params[0]), $this->page_selected()));
 
                 $template->render();
                 break;
@@ -90,8 +82,13 @@ class Pages extends Controller {
                 }
 
                 $animals = $this->loadModel('Animal_all');
+
                 $template->set('title', $title);
-                $template->set('animaux', $animals->tri(array('categorie' => $categorie)));
+                $template->set('page', $this->page_selected());
+                $template->set('selected', $animals->count_tri(array('categorie' => $categorie)));
+                $template->set('category', $this->params[0]);
+                $template->set('cpt', 0);
+                $template->set('animals', $animals->tri(array('categorie' => $categorie)));
 
                 $template->render();
             
@@ -117,5 +114,14 @@ class Pages extends Controller {
         $this->template->set('info_page', $pages->load_one_by_label($label, 'page'));
 
         $this->template->render();
+    }
+
+    private function page_selected(){
+        if (isset($this->params[1]) && is_numeric($this->params[1])){
+            return floor($this->params[1]);
+        }
+        else {
+            return 1;
+        }
     }
 }
