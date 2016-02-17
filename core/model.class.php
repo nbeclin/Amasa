@@ -71,10 +71,10 @@ class Model {
     *   Add pagination 
      */
     public function selectAllLimit($table, $fields, $where=null, $other=null, $page=null){
-        $nb_display = 20;
+        $nb_display = 9;
 
         if($page != null){
-            $limit_inf = ($page-1)*20;
+            $limit_inf = ($page-1)*$nb_display;
             $other .= ' LIMIT '.$limit_inf.','.$nb_display;
         }
 
