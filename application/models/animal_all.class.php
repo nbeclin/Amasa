@@ -22,8 +22,39 @@ class Animal_all extends Model {
     * @param $post - searched values
     * @return array of result
     */
-    public function tri($post){
+    public function tri($post, $page=null){
         $result = array();
+
+        $post = $this->clean_post_tri($post);
+
+        $other = null;
+
+        if(isset($post['anneeAdoption'])){
+            $other = 'AND anneeAdoption LIKE "%'.$post['anneeAdoption'].'%" ORDER BY nom';
+            unset($post['anneeAdoption']);
+        }
+
+        if (!empty($post)) {
+            foreach($this->selectAllLimit('animal', '*', $post, $other, $page) as $animal){
+                array_push($result, new Animal($animal));
+            }
+        }
+        else {
+            foreach($this->selectAllLimit('animal', '*', null, null, $page) as $animal){
+                array_push($result, new Animal($animal));
+            }
+        }
+
+        return $result;
+    }
+
+    /** 
+    * Function load_one
+    * @param $post - searched values
+    * @return int of result number
+    */
+    public function count_tri($post){
+        $result = 0;
 
         $post = $this->clean_post_tri($post);
 
@@ -36,12 +67,12 @@ class Animal_all extends Model {
 
         if (!empty($post)) {
             foreach($this->selectAll('animal', '*', $post, $other) as $animal){
-                array_push($result, new Animal($animal));
+                $result++;
             }
         }
         else {
             foreach($this->selectAll('animal', '*') as $animal){
-                array_push($result, new Animal($animal));
+                $result++;
             }
         }
 

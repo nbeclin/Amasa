@@ -45,10 +45,22 @@ class Pages extends Controller {
                 $template->set('static', $this->staticFiles);
                 $template->set('nav', 'main');
                 $template->addCss('style', 'css');
+                
+                $animals = $this->loadModel('Animal_all');
 
-                $animaux = $this->loadModel('Animal_all');
+                if (isset($this->params[1]) && is_numeric($this->params[1])){
+                    $template->set('page', floor($this->params[1]));
+                    $page = $this->params[1];
+                }
+                else {
+                    $template->set('page', 1);
+                    $page = 1;
+                }
+
                 $template->set('title', 'Adoptés en '.$this->params[0]);
-                $template->set('animaux', $animaux->tri(array('categorie' => 'adopte', 'anneeAdoption' => $this->params[0])));
+                $template->set('selected', $animals->count_tri(array('categorie' => 'adopte', 'anneeAdoption' => $this->params[0])));
+                $template->set('year', $this->params[0]); 
+                $template->set('animals', $animals->tri(array('categorie' => 'adopte', 'anneeAdoption' => $this->params[0]), $page));
                 $template->set('cpt', 0);
 
                 $template->render();
@@ -77,9 +89,9 @@ class Pages extends Controller {
                         break;
                 }
 
-                $animaux = $this->loadModel('Animal_all');
+                $animals = $this->loadModel('Animal_all');
                 $template->set('title', $title);
-                $template->set('animaux', $animaux->tri(array('categorie' => $categorie)));
+                $template->set('animaux', $animals->tri(array('categorie' => $categorie)));
 
                 $template->render();
             
