@@ -16,6 +16,7 @@ class Animal extends SqlModel {
     public $anneeAdoption;
     public $chatMois;
     public $photos = array();
+    public $age_text;
 
     /**
      * Load object properties

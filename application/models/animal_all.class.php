@@ -13,6 +13,7 @@ class Animal_all extends Model {
     */
     private function load_all(){
         foreach($this->selectAll('animal', '*') as $animal){
+            $animal['age_text'] = $this->interval($animal['age']);
             array_push($this->all, new Animal($animal));
         }
     }
@@ -36,11 +37,13 @@ class Animal_all extends Model {
 
         if (!empty($post)) {
             foreach($this->selectAllLimit('animal', '*', $post, $other, $page) as $animal){
+                $animal['age_text'] = $this->interval($animal['age']);
                 array_push($result, new Animal($animal));
             }
         }
         else {
             foreach($this->selectAllLimit('animal', '*', null, null, $page) as $animal){
+                $animal['age_text'] = $this->interval($animal['age']);
                 array_push($result, new Animal($animal));
             }
         }
@@ -211,6 +214,43 @@ class Animal_all extends Model {
             );
 
         $this->insertOne('photo', $values);
+    }
+
+    private function interval($date) {      
+        $datenow = new DateTime("now");
+        $date = new DateTime($date);
+        
+        $interval = date_diff($datenow, $date);
+        
+        switch ($interval->y) {
+            case 0:
+                if ($interval->m == 0) {
+                    $result = 'Presque 1 mois';
+                }
+                else {
+                    $result = $interval->m.' mois';
+                }
+                break;
+            
+            case 1:
+                if ($interval->m == 0) {
+                    $result = $interval->y.' an';
+                }
+                else {
+                    $result = ''.$interval->y.' an et '.$interval->m.' mois';
+                }
+                break;
+            
+            Default:
+                if ($interval->m == 0) {
+                    $result = ''.$interval->y.' ans';
+                }
+                else {
+                    $result = ''.$interval->y.' ans et '.$interval->m.' mois';
+                }
+        }
+        
+        return $result;
     }
 
     /**
