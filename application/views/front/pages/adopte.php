@@ -3,14 +3,14 @@
 
 	<?php foreach ($animals as $animal) : ?>
 		<div class="modal fade" id="form_animal<?php echo $animal->id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	        <div class="modal-dialog" role="document" style="width: auto; max-width: 50%;">
+	        <div class="modal-dialog" role="document">
 	            <div class="modal-content">
 	                <div class="modal-header">
 	                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	                    <h4><span class ="<?php echo ($animal->sexe == 1) ? 'bleu' : 'rose' ?> gras"><?php echo $animal->nom ?></span></h4>
 	                </div>
 	                <div class="modal-body">
-	                   <img src="/<?php echo BASE_URL ?>img/animaux/<?php echo $animal->photos[0]->lien ?>" alt="amasa" />
+	                   <img class="img-responsive" src="/<?php echo BASE_URL ?>img/animaux/<?php echo $animal->photos[0]->lien ?>" alt="amasa" />
 	                </div>
 	            </div>
 	        </div>
