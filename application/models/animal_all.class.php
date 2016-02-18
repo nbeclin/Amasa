@@ -216,6 +216,11 @@ class Animal_all extends Model {
         $this->insertOne('photo', $values);
     }
 
+    /** 
+    * Function interval - Age format
+    * @param $date - datetime format
+    * @return $result - date in string
+    */
     private function interval($date) {      
         $datenow = new DateTime("now");
         $date = new DateTime($date);
