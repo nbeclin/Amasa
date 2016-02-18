@@ -345,8 +345,8 @@ html,body
 
 #contenu h1
 {
-	font-size: 24px;
-	font-family:Sweeep;
+	font-size: 26px;
+	font-family:Calibri;
 	text-align:center;
 	color:#2E3094;
 	font-weight: bold;
@@ -367,8 +367,8 @@ html,body
 
 #contenu h2
 {
-	font-size: 16px;
-	font-family:Comic Sans MS;
+	font-size: 18px;
+	font-family:Calibri;
 	text-align : justify;
 	color:#000000;
 	font-weight: normal;
@@ -388,8 +388,8 @@ html,body
 
 #contenu h3
 {
-	font-size: 16px;
-	font-family:Comic Sans MS;
+	font-size: 18px;
+	font-family:Calibri;
 	text-align : center;
 	color:#000000;
 	font-weight: normal;
