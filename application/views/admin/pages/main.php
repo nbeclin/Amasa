@@ -1,4 +1,4 @@
-<a href="/<?php echo BASE_URL ?>pages/add" class="btn btn-success">Ajouter une page</a>
+<a href="/<?php echo BASE_URL ?>admin/pages/add" class="btn btn-success">Ajouter une page</a>
 <h2>Gestion des pages</h2>
 <table class="table table-striped table-bordered">
     <thead>
