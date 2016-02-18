@@ -6,6 +6,7 @@
     </div>
 <?php else: ?>
 <form action="" class="form" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="id" class="form-control" value="<?php echo $info_animal->id ?>" />
 	<div class="row">
 		<div class="col-md-4">
 			<div class="form-group">
