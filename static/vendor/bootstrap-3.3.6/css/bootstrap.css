@@ -4096,19 +4096,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-pills > li + li {
   margin-left: 2px;
 }
-@font-face {
-font-family: 'Sweeep';
-font-style: normal;
-font-weight: normal;
-src: local('Sweeep'), url('Sweeep.woff') format('woff');
-}
 
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
   color: #2E3094;
   background-color: #F46320;
-  font-family:Sweeep;
   font-style:bold;  
 }
 .nav-stacked > li {
