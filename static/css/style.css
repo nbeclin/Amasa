@@ -5,11 +5,29 @@ font-weight: normal;
 src: local('Sweeep'), url('Sweeep.woff') format('woff');
 }
 
-html,body
+html
 {
-	/*Couleur de fond*/
-	background-color:#93E0FA;
+	/*Couleur de fond
+	background-color:#93E0FA;*/
+	background:#EEFBFE;
 	
+	/*Marge extérieur*/
+	margin-left:0px;
+	margin-right:0px;
+	margin-top:0px;
+	margin-bottom:0px;
+	
+	/*Marge interieur*/
+	padding-left:0px;
+	padding-right:0px;
+	padding-top:0px;
+	padding-bottom:0px;	
+}
+
+body
+{	
+    
+	background: radial-gradient(#6AD6F9, white);
 	/*Marge extérieur*/
 	margin-left:0px;
 	margin-right:0px;
@@ -26,7 +44,7 @@ html,body
 .bandeau{
 	background-color:#6AD6F9;
 	border-radius: 10px 10px 10px 10px;
-	margin-top:1%;
+	margin-top:0;
 	margin-bottom:20px;
 }
 
