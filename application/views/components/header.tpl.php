@@ -50,7 +50,9 @@
 			<p class="text-center titre2">Association Muretaine pour les Animaux Sans-Abris</p>
 			<div class="container-bd-photo">
 				<div class="bd-photo">
-					<?php for ($i=1;$i<31;$i++) : ?><img src="/<?php echo BASE_URL ?>img/bandeau/img<?php echo $i ?>.jpg" id="img<?php echo $i ?>" class="img-bd-photo" /><?php endfor; ?>
+					<?php for ($i=1;$i<31;$i++) : ?>
+						<img src="/<?php echo BASE_URL ?>img/bandeau/img<?php echo $i ?>.jpg" id="img<?php echo $i ?>" class="img-bd-photo" />
+					<?php endfor; ?>
 				</div>
 				<input type="hidden" id="cpt" value="1" />
 			</div>
