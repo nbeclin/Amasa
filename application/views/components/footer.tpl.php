@@ -1,6 +1,7 @@
+    <div class="container separation"></div>
     <div class="footer container-fluid">
         <div class="container">
-            &copy; Amasa <?php echo date('Y'); ?>
+            <p class="text-center">&copy; Amasa <?php echo date('Y'); ?></p>
         </div>
 
         <?php if(!DEV): ?>

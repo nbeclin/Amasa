@@ -407,8 +407,27 @@ html,body
 	padding-bottom:0px;
 }
 
+.nav-pills > li > a {
+	font-family:Sweeep;
+}
+
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+	font-family:Sweeep;
+}
+
 .img-modal {
 	margin:auto;
+}
+
+.separation {
+	background-color:#6AD6F9;
+
+	height:1px;
+
+	margin-top:20px;
+	margin-bottom:2px;
 }
 
 .bleu
