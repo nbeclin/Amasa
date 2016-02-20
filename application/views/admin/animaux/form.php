@@ -85,6 +85,12 @@
 								Non
 							</label>
 						</div>
+						<div class="radio">
+							<label>
+								<input type="radio" name="okChat" value="2" <?php echo $info_animal->okChat == '2' ? 'checked' : ''; ?>>
+								?
+							</label>
+						</div>
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -102,6 +108,12 @@
 								Non
 							</label>
 						</div>
+						<div class="radio">
+							<label>
+								<input type="radio" name="okChien" value="2" <?php echo $info_animal->okChien == '2' ? 'checked' : ''; ?>>
+								?							
+							</label>
+						</div>
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -115,8 +127,14 @@
 						</div>
 						<div class="radio">
 							<label>
-								<input type="radio" name="okEnfant" value="0" <?php echo $info_animal->okEnfant == '1' ? 'checked' : ''; ?>>
+								<input type="radio" name="okEnfant" value="0" <?php echo $info_animal->okEnfant == '0' ? 'checked' : ''; ?>>
 								Non
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio" name="okEnfant" value="2" <?php echo $info_animal->okEnfant == '2' ? 'checked' : ''; ?>>
+								?
 							</label>
 						</div>
 					</div>
