@@ -116,12 +116,9 @@ class Animal_all extends Model {
 
         $liens = $post['liens'];
 
-        $image_selected = $_SERVER["DOCUMENT_ROOT"];
-        $image_selected .= BASE_URL;
-        $image_selected .= 'application/img/maud.jpg';
-        $image_out = $_SERVER["DOCUMENT_ROOT"];
-        $image_out .= BASE_URL;
-        $image_out .= 'application/img/maud2.jpg';
+        if($post['chatMois'] == 1){
+            $this->update('animal', array('chatMois' => '0'), array('chatMois' => '1'));
+        }
 
         if($post['id'] != ''){
             $animal_id = $post['id'];
