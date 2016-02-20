@@ -68,13 +68,45 @@
 								<h5><p><span class="gras">Soins : </span><?php echo $animal->soin ?></p></h5>
 								<div class="row">
 									<div class="col-md-4">
-										<h5 ><p class="text-center"><span class="gras">Chat : </span><?php echo $animal->okChat == 1 ? '<span class="glyphicon glyphicon-thumbs-up vert"></span>' : '<span class="glyphicon glyphicon-thumbs-down rouge"></span>'; ?></p></h5>
+										<h5 ><p class="text-center"><span class="gras">Chat : </span>									
+										<?php if($animal->okChat == '0') : ?>
+										<span class="glyphicon glyphicon-thumbs-down rouge"></span>
+										<?php endif; ?>
+										<?php if($animal->okChat == '1') : ?>
+										<span class="glyphicon glyphicon-thumbs-up vert"></span>
+										<?php endif; ?>
+										<?php if($animal->okChat == '2') : ?>
+										<span class="glyphicon glyphicon-question-sign"></span>
+										<?php endif; ?>
+										</p></h5>
 									</div>
 									<div class="col-md-4">
-										<h5><p class="text-center"><span class="gras">Chien : </span><?php echo $animal->okChien == 1 ? '<span class="glyphicon glyphicon-thumbs-up vert"></span>' : '<span class="glyphicon glyphicon-thumbs-down rouge"></span>'; ?></p></h5>
+										<h5><p class="text-center"><span class="gras">
+										Chien : </span>									
+										<?php if($animal->okChien == '0') : ?>
+										<span class="glyphicon glyphicon-thumbs-down rouge"></span>
+										<?php endif; ?>
+										<?php if($animal->okChien == '1') : ?>
+										<span class="glyphicon glyphicon-thumbs-up vert"></span>
+										<?php endif; ?>
+										<?php if($animal->okChien == '2') : ?>
+										<span class="glyphicon glyphicon-question-sign"></span>
+										<?php endif; ?>
+										</p></h5>
 									</div>
 									<div class="col-md-4">
-										<h5><p class="text-center"><span class="gras">Enfant : </span><?php echo $animal->okEnfant == 1 ? '<span class="glyphicon glyphicon-thumbs-up vert"></span>' : '<span class="glyphicon glyphicon-thumbs-down rouge"></span>'; ?></p></h5>
+										<h5><p class="text-center"><span class="gras">
+										Enfant : </span>								
+										<?php if($animal->okEnfant == '0') : ?>
+										<span class="glyphicon glyphicon-thumbs-down rouge"></span>
+										<?php endif; ?>
+										<?php if($animal->okEnfant == '1') : ?>
+										<span class="glyphicon glyphicon-thumbs-up vert"></span>
+										<?php endif; ?>
+										<?php if($animal->okEnfant == '2') : ?>
+										<span class="glyphicon glyphicon-question-sign"></span>
+										<?php endif; ?>
+										</p></h5>
 									</div>
 								</div>
 								<h5><p><span class="gras">Son petit + : </span><?php echo $animal->plus ?></p></h5>
