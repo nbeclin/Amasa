@@ -25,7 +25,7 @@ html, body
 }
 
 .bandeau{
-	background: radial-gradient(ellipse closest-side, #CEF1FD, #6AD6F9, #FFFFFF, #6AD6F9, #CEF1FD);
+	background: radial-gradient(ellipse closest-side, #CEF1FD, #6AD6F9 80%, #CEF1FD);
 	border-radius: 10px 10px 10px 10px;
 	margin-top:0;
 	margin-bottom:20px;
