@@ -1,6 +1,6 @@
 function slide(cpt){
 	for (i=1 ; i<31;i++){
-		if(cpt.val()+i <= 30){
+		if(eval(cpt)+i <= 30){
 			document.getElementById('img' + i).src = 'img/bandeau/img' + (eval(cpt)+i) + '.jpg'; 
 		}
 		else {
