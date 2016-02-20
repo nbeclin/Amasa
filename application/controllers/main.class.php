@@ -13,8 +13,11 @@ class Main extends Controller {
         $template->set('static', $this->staticFiles);
         $template->set('title', $config['project']);
         $template->set('nav', 'main');
-
         $template->addCss('style', 'css');
+        
+        $animals = $this->loadModel('Animal_all');
+        $template->set('pet_of_the_month', $animals->pet_of_the_month());
+
         $template->render();
     }
 

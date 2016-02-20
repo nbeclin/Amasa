@@ -8,8 +8,18 @@
 </head>
 
 <body onload="javascript:setInterval(function(){slide(document.getElementById('cpt').value);},900);" <?php echo !DEV ? 'class="prod"' : ''; ?>>    
-    <?php include 'header.tpl.php' ?>
     
+    <?php include 'header_start.tpl.php' ?>
+   
+    <p class="text-center">
+        <img class="img-chat-mois img-circle" src="/<?php echo BASE_URL ?>img/animaux/00-<?php echo $pet_of_the_month['lien'] ?>" alt="amasa" />
+    </p>
+    <p class="text-center titre5">
+        <?php echo $pet_of_the_month['nom'] ?>
+    </p>
+    
+    <?php include 'header_end.tpl.php' ?>
+
     <div class="container">
         <div class="row">
             <!-- Loading menu -->

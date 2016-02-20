@@ -11,6 +11,8 @@ class Pages extends Controller {
 
     function index($action=false, $sub_param=false){
     	
+        $animals = $this->loadModel('Animal_all');
+
         switch ($action){
     		case 'association':
                 $this->proceed($action);
@@ -45,8 +47,8 @@ class Pages extends Controller {
                 $template->set('static', $this->staticFiles);
                 $template->set('nav', 'main');
                 $template->addCss('style', 'css');
-                
-                $animals = $this->loadModel('Animal_all');
+
+                $template->set('pet_of_the_month', $animals->pet_of_the_month());
 
                 $template->set('title', 'Adoptés en '.$this->params[0]);
                 $template->set('page', $this->page_selected());
@@ -63,6 +65,8 @@ class Pages extends Controller {
                 $template->set('static', $this->staticFiles);
                 $template->set('nav', 'main');
                 $template->addCss('style', 'css');
+
+                $template->set('pet_of_the_month', $animals->pet_of_the_month());
 
                 switch ($this->params[0]){
                     case 'chat':
@@ -81,8 +85,6 @@ class Pages extends Controller {
                         break;
                 }
 
-                $animals = $this->loadModel('Animal_all');
-
                 $template->set('title', $title);
                 $template->set('page', $this->page_selected());
                 $template->set('selected', $animals->count_tri(array('categorie' => $categorie)));
@@ -98,6 +100,9 @@ class Pages extends Controller {
     		$template = $this->loadView('error404');
 	        $template->set('static', $this->staticFiles);
 	        $template->addCss('style', 'css');
+
+            $template->set('pet_of_the_month', $animals->pet_of_the_month());
+
 	        $template->set('title', 'ERREUR 404');
 	        $template->set('nav', null);
 	        $template->render();
@@ -109,6 +114,9 @@ class Pages extends Controller {
         $this->template->set('static', $this->staticFiles);
         $this->template->set('nav', 'main');
         $this->template->addCss('style', 'css');
+        
+        $animals = $this->loadModel('Animal_all');        
+        $this->template->set('pet_of_the_month', $animals->pet_of_the_month());
         
         $pages = $this->loadModel('Page_all');
         $this->template->set('info_page', $pages->load_one_by_label($label, 'page'));

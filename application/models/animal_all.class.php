@@ -52,6 +52,14 @@ class Animal_all extends Model {
     }
 
     /** 
+    * Function pet_of_the_month
+    * @return array with name and picture link of the animal
+    */
+    public function pet_of_the_month(){
+        return $this->selectOne('animal, photo', 'nom, lien', array('chatMois' => '1', 'premiere' => '1'), 'AND animal.id = photo.idAnimal');
+    }
+
+    /** 
     * Function load_one
     * @param $post - searched values
     * @return int of result number
