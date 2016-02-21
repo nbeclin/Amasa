@@ -31,6 +31,15 @@ html, body
 	margin-bottom:20px;
 }
 
+.pres_accueil{
+	background-color:none;
+	border-radius: 20px 20px 20px 20px;
+	border: solid 4px #003472;
+	margin-top:0;
+	margin-bottom:20px;
+	padding:10px;
+}
+
 .titre1
 {	
 	color: #2E2F93;
