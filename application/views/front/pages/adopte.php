@@ -20,7 +20,6 @@
 		<?php endif; ?>
 			<div class="col-md-4 img-portfolio">
 				<a href="#" data-toggle="modal" data-target="#form_animal<?php echo $animal->id ?>">
-					<?php var_dump(is_file('/'.BASE_URL.'img/animaux/00-'.$animal->photos[0]->lien.'')) ?>
 					<img class="img-responsive img-hover" src="/<?php echo BASE_URL ?>img/animaux/00-<?php echo $animal->photos[0]->lien ?>" alt="amasa" />
 				</a>
 				<h3>
