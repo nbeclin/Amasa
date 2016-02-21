@@ -8,17 +8,18 @@ class Main extends Controller {
 
     function index(){
         global $config;
-        $template = $this->loadView('front/main');
+        $this->template = $this->loadView('front/pages/commun');
+        $this->template->set('static', $this->staticFiles);
+        $this->template->set('nav', 'main');
+        $this->template->addCss('style', 'css');
         
-        $template->set('static', $this->staticFiles);
-        $template->set('title', $config['project']);
-        $template->set('nav', 'main');
-        $template->addCss('style', 'css');
+        $animals = $this->loadModel('Animal_all');        
+        $this->template->set('pet_of_the_month', $animals->pet_of_the_month());
         
-        $animals = $this->loadModel('Animal_all');
-        $template->set('pet_of_the_month', $animals->pet_of_the_month());
+        $pages = $this->loadModel('Page_all');
+        $this->template->set('info_page', $pages->load_one_by_label('accueil', 'page'));
 
-        $template->render();
+        $this->template->render();
     }
 
 }

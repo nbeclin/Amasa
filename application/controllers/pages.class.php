@@ -14,7 +14,11 @@ class Pages extends Controller {
         $animals = $this->loadModel('Animal_all');
 
         switch ($action){
-    		case 'association':
+            case 'accueil':
+                $this->proceed($action);
+                break;
+
+            case 'association':
                 $this->proceed($action);
                 break;
 
