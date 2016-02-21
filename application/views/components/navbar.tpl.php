@@ -19,8 +19,8 @@
 		<li class="ss-bt 5-2"><a href="/<?php echo BASE_URL ?>pages/adherer">Adhérer à l'association</a></li>
 		<li class="ss-bt 5-2"><a href="/<?php echo BASE_URL ?>pages/don">Faire un don</a></li>
 		<li class="ss-bt 5-2"><a href="/<?php echo BASE_URL ?>pages/parrainer">Parrainer un animal</a></li>
-	<li class="active 6-1"><a href="#"><span class="gras">Liens utiles</span></a></li>
-<li class="active 7-1"><a href="#"><span class="gras">Revus de presse</span></a></li>
+	<li class="active 6-1"><a href="/<?php echo BASE_URL ?>pages/lien"><span class="gras">Liens utiles</span></a></li>
+<li class="active 7-1"><a href="/<?php echo BASE_URL ?>pages/presse"><span class="gras">Revus de presse</span></a></li>
 </ul>
 
 <br />			
