@@ -46,6 +46,14 @@ class Pages extends Controller {
                 $this->proceed($action);
                 break;
 
+            case 'lien':
+                $this->proceed($action);
+                break;
+
+            case 'presse':
+                $this->proceed($action);
+                break;
+
             case 'adopte':
                 $template = $this->loadView('front/pages/adopte');
                 $template->set('static', $this->staticFiles);
