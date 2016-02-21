@@ -1,5 +1,5 @@
 <div id="contenu">
-	<h1><?php echo $title ?></h1>
+	<h1><?php echo $selected ?> animaux adoptés en <?php echo $year ?></h1>
 
 	<?php foreach ($animals as $animal) : ?>
 		<div class="modal fade" id="form_animal<?php echo $animal->id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
