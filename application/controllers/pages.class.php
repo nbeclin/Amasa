@@ -26,6 +26,10 @@ class Pages extends Controller {
                 $this->proceed($action);
                 break;
 
+            case 'tarifAdoption':
+                $this->proceed($action);
+                break;
+
             case 'devFamille':
                 $this->proceed($action);
                 break;
