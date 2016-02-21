@@ -43,7 +43,7 @@
 	<!-- Loading header -->
 	<div class="row">
 		<div class="col-md-2">
-			<p class="text-center"><br /><img src="/<?php echo BASE_URL ?>img/logo.png" alt="amasa" /></p>
+			<p class="text-center"><br /><a href="/<?php echo BASE_URL ?>"><img src="/<?php echo BASE_URL ?>img/logo.png" alt="amasa" /></a></p>
 		</div>
 		<div class="col-md-8" style="padding-left: 30px;">
 			<p class="text-center titre1">31 Pattes d'amour - AMASA</p>
