@@ -1,7 +1,7 @@
     <div class="container separation"></div>
     <div class="footer container-fluid">
         <div class="container">
-            <p class="text-center">&copy; Amasa <?php echo date('Y'); ?></p>
+            <p class="text-center">&copy; 31 Pattes d'amour - AMASA <?php echo date('Y'); ?></p>
         </div>
 
         <?php if(!DEV): ?>
