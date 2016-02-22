@@ -10,7 +10,7 @@
 		<li class="ss-bt 3-2"><a href="/<?php echo BASE_URL ?>pages/adopte/2015">2015</a></li>
 		<li class="ss-bt 3-2"><a href="/<?php echo BASE_URL ?>pages/adopte/2014">2014</a></li>
 		<li class="ss-bt 3-2"><a href="/<?php echo BASE_URL ?>pages/adopte/2013">2013</a></li>
-	<li class="active 4-1"><a href="/<?php echo BASE_URL ?>pages/condAdoption"><span class="gras">Adopter un animal</span></a></li>
+	<li class="active 4-1"><a href="#"><span class="gras">Adopter un animal</span></a></li>
 		<li class="ss-bt 4-2"><a href="/<?php echo BASE_URL ?>pages/condAdoption">Conditions</a></li>
 	 	<li class="ss-bt 4-2"><a href="/<?php echo BASE_URL ?>pages/tarifAdoption">Tarifs</a></li>
 				  
