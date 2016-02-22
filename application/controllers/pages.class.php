@@ -14,55 +14,9 @@ class Pages extends Controller {
         $animals = $this->loadModel('Animal_all');
 
         switch ($action){
-            case 'accueil':
-                $this->proceed($action);
-                break;
-
-            case 'association':
-                $this->proceed($action);
-                break;
-
-            case 'bureau':
-                $this->proceed($action);
-                break;
-
-            case 'condAdoption':
-                $this->proceed($action);
-                break;
-
-            case 'tarifAdoption':
-                $this->proceed($action);
-                break;
-
-            case 'devFamille':
-                $this->proceed($action);
-                break;
-
-            case 'adherer':
-                $this->proceed($action);
-                break;
-
-            case 'don':
-                $this->proceed($action);
-                break;
-
-            case 'parrainer':
-                $this->proceed($action);
-                break;
-
-            case 'lien':
-                $this->proceed($action);
-                break;
-
-            case 'presse':
-                $this->proceed($action);
-                break;
-
             case 'adopte':
                 $template = $this->loadView('front/pages/adopte');
-                $template->set('static', $this->staticFiles);
                 $template->set('nav', 'main');
-                $template->addCss('style', 'css');
 
                 $template->set('pet_of_the_month', $animals->pet_of_the_month());
 
@@ -72,15 +26,11 @@ class Pages extends Controller {
                 $template->set('year', $this->params[0]);
                 $template->set('cpt', 0);
                 $template->set('animals', $animals->tri(array('categorie' => 'adopte', 'anneeAdoption' => $this->params[0]), $this->page_selected()));
-
-                $template->render();
                 break;
 
             case 'adoption':
                 $template = $this->loadView('front/pages/adoption');
-                $template->set('static', $this->staticFiles);
                 $template->set('nav', 'main');
-                $template->addCss('style', 'css');
 
                 $template->set('pet_of_the_month', $animals->pet_of_the_month());
 
@@ -107,37 +57,31 @@ class Pages extends Controller {
                 $template->set('category', $this->params[0]);
                 $template->set('cpt', 0);
                 $template->set('animals', $animals->tri(array('categorie' => $categorie)));
-
-                $template->render();
             
                 break;
 
     		default:
-    		$template = $this->loadView('error404');
-	        $template->set('static', $this->staticFiles);
-	        $template->addCss('style', 'css');
-
-            $template->set('pet_of_the_month', $animals->pet_of_the_month());
-
-	        $template->set('title', 'ERREUR 404');
-	        $template->set('nav', null);
-	        $template->render();
+                $pages = $this->loadModel('Page_all');
+                $load_page = $pages->load_one_by_label($action, 'page');
+            
+                if($load_page->id == null){
+                    $template = $this->loadView('error404');
+                    $template->set('title', 'ERREUR 404');
+                    $template->set('nav', null);
+                }
+                else{
+                    $template = $this->loadView('front/pages/commun');
+                    $template->set('nav', 'main');       
+                    $template->set('info_page', $load_page);
+                }
     	}
-    }
 
-    private function proceed($label){
-        $this->template = $this->loadView('front/pages/commun');
-        $this->template->set('static', $this->staticFiles);
-        $this->template->set('nav', 'main');
-        $this->template->addCss('style', 'css');
-        
-        $animals = $this->loadModel('Animal_all');        
-        $this->template->set('pet_of_the_month', $animals->pet_of_the_month());
-        
-        $pages = $this->loadModel('Page_all');
-        $this->template->set('info_page', $pages->load_one_by_label($label, 'page'));
+        $template->set('static', $this->staticFiles);
+        $template->addCss('style', 'css');
 
-        $this->template->render();
+        $template->set('pet_of_the_month', $animals->pet_of_the_month());
+        
+        $template->render();
     }
 
     private function page_selected(){
@@ -147,5 +91,16 @@ class Pages extends Controller {
         else {
             return 1;
         }
+    }
+
+    private function load_banner_photo(){
+        $results = scandir('img/bandeau/');
+        foreach ($results as $key => $value) {
+            if ($value == '.' || $value == '..'){
+                unset($results[$key]);
+            }
+            $results[$key] = '../img/bandeau/'.$value;
+        }
+        return $results;
     }
 }
