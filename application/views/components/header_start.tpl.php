@@ -49,10 +49,7 @@
 			<p class="text-center titre1">31 Pattes d'amour - AMASA</p>
 			<p class="text-center titre2">Association Muretaine pour les Animaux Sans-Abris</p>
 			<div class="container-bd-photo">
-				<div class="bd-photo">
-					<?php for ($i=1;$i<31;$i++) : ?><img src="/<?php echo BASE_URL ?>img/bandeau/img<?php echo $i ?>.jpg" id="img<?php echo $i ?>" class="img-bd-photo" /><?php endfor; ?>
-				</div>
-				<input type="hidden" id="cpt" value="1" />
+				<div id="bandeau_horizontal" style="position:relative;width:100%;height:100px;overflow:hidden;">&nbsp;</div>
 			</div>
 			<p class="text-center titre3">Aidons-les !<br />Ils ont besoin de nous, Nous avons besoin de vous !</p>
 		</div>
