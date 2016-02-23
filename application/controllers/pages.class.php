@@ -76,11 +76,11 @@ class Pages extends Controller {
                 }
     	}
 
+        $template->set('pictures', $this->load_banner_photo());
         $template->set('static', $this->staticFiles);
         $template->addCss('style', 'css');
 
         $template->set('pet_of_the_month', $animals->pet_of_the_month());
-        
         $template->render();
     }
 
@@ -94,13 +94,16 @@ class Pages extends Controller {
     }
 
     private function load_banner_photo(){
-        $results = scandir('img/bandeau/');
-        foreach ($results as $key => $value) {
-            if ($value == '.' || $value == '..'){
-                unset($results[$key]);
-            }
-            $results[$key] = '../img/bandeau/'.$value;
+        $files = scandir('img/bandeau/');
+        $results = array();
+        $cpt = 0;
+        foreach ($files as $file) {
+            if (!($file == '.' || $file == '..')){ 
+                $results[$cpt] = 'http://'.$_SERVER['HTTP_HOST'].'/'.BASE_URL.'img/bandeau/'.$file;
+                $cpt++;
+            }           
         }
         return $results;
     }
 }
+
