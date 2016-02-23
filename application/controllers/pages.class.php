@@ -96,11 +96,9 @@ class Pages extends Controller {
     private function load_banner_photo(){
         $files = scandir('img/bandeau/');
         $results = array();
-        $cpt = 0;
         foreach ($files as $file) {
             if (!($file == '.' || $file == '..')){ 
-                $results[$cpt] = 'http://'.$_SERVER['HTTP_HOST'].'/'.BASE_URL.'img/bandeau/'.$file;
-                $cpt++;
+                array_push($results, 'http://'.$_SERVER['HTTP_HOST'].'/'.BASE_URL.'img/bandeau/'.$file);
             }           
         }
         return $results;

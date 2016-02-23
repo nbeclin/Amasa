@@ -8,11 +8,11 @@
 		var imageObj = new Array();
 
 		// Préchargement images
-		for(i=0; i<=pictures_js.length; i++) 
-		{
-			imageObj[i] = new Image();
-			imageObj[i].src=pictures_js[i];
-		}
+		$.each(pictures_js, function(_, src){
+			new_image = new Image();
+			new_image.src = src;
+			imageObj.push(new_image);
+		})
 	</script>
 	<script type="text/javascript" src="/<?php echo BASE_URL.$static->js('banner', 'js'); ?>"></script>
     <?php echo $extra_js; ?>
