@@ -39,7 +39,17 @@
 	</div>
 	<div class="col-md-4">
 		<a href="#:">
-			<p class="text-center"><img src="/<?php echo BASE_URL ?>img/phone.png" alt="Responsive image"></p>
+			<p class="text-center"><img src="/<?php echo BASE_URL ?>img/phone.png" id="phone_picture" alt="Responsive image"></p>
 		</a>
+	</div>
+</div>
+
+
+<div class="row" >
+	<!-- Loading contact -->
+	<div class="col-md-12">
+		<div class="alert alert-info" role="alert" id="display_phone">
+	  		<p class="text-center"><span class="glyphicon glyphicon-phone-alt"></span> : 06 74 53 76 52</p>
+		</div>
 	</div>
 </div>

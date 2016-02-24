@@ -2,6 +2,14 @@ jQuery(document).ready(function($){
 
 	$(".ss-bt").hide();
 
+	$("#display_phone").hide();
+
+	$("#phone_picture").click(function ()
+	{
+		$("#display_phone").show();
+	})
+
+
 	$(".1-1").click(function ()
 	{
 		$(".ss-bt").hide();
@@ -43,5 +51,4 @@ jQuery(document).ready(function($){
 		$(".ss-bt").hide(); 
 		$(".7-2").show(); 
 	})
-
 });
