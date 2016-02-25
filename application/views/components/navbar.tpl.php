@@ -37,9 +37,14 @@
 			<p class="text-center"><img src="/<?php echo BASE_URL ?>img/fb.png" alt="Responsive image"></p>
 		</a>
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-4" id="phone_picture_show" >
 		<a href="#:">
-			<p class="text-center"><img src="/<?php echo BASE_URL ?>img/phone.png" id="phone_picture" alt="Responsive image"></p>
+			<p class="text-center"><img src="/<?php echo BASE_URL ?>img/phone.png" alt="Responsive image"></p>
+		</a>
+	</div>
+	<div class="col-md-4" id="phone_picture_hide">
+		<a href="#:">
+			<p class="text-center"><img src="/<?php echo BASE_URL ?>img/phone.png" alt="Responsive image"></p>
 		</a>
 	</div>
 </div>

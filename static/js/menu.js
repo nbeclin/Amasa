@@ -3,10 +3,20 @@ jQuery(document).ready(function($){
 	$(".ss-bt").hide();
 
 	$("#display_phone").hide();
+	$("#phone_picture_hide").hide();
 
-	$("#phone_picture").click(function ()
+	$("#phone_picture_show").click(function ()
 	{
 		$("#display_phone").show();
+		$("#phone_picture_show").hide();
+		$("#phone_picture_hide").show();
+	})
+
+	$("#phone_picture_hide").click(function ()
+	{
+		$("#display_phone").hide();
+		$("#phone_picture_hide").hide();
+		$("#phone_picture_show").show();
 	})
 
 
