@@ -159,7 +159,7 @@ class Animal_all extends Model {
     * @return string - fr date format 
     */
     private function date_conversion_fr($dateToConvert){
-        if ($dateToConvert == '0000-00-00 00:00:00.0' || $dateToConvert == '0000-00-00' || $dateToConvert == ''){
+        if ($dateToConvert == '0000-00-00 00:00:00.0' || $dateToConvert == '0000-00-00' || $dateToConvert == '' || $dateToConvert == '0001-11-30 00:00:00' || $dateToConvert == '2015-00-00 00:00:00'){
             return null;
         }
         else {
