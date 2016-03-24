@@ -41,7 +41,9 @@
 			</div>
 			<?php for($cpt=0;$cpt<5;$cpt++) : ?>
 				<div class="form-group">
-					<label class="control-label">Image <?php echo $cpt+1 ?></label>
+					<label class="control-label">Image <?php echo $cpt+1 ?>
+					<?php echo $cpt==0 ? ' (Principale)' : '' ?>
+					</label>
 					<input type="text" name="liens[<?php echo $cpt+1 ?>]" class="form-control" value="<?php echo $cpt < sizeof($info_animal->photos) ? $info_animal->photos[$cpt]->lien : '' ?>" />
 				</div>
 			<?php endfor; ?>
