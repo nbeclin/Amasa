@@ -56,7 +56,9 @@ class Animal_all extends Model {
     * @return array with name and picture link of the animal
     */
     public function pet_of_the_month(){
-        return $this->selectOne('animal, photo', 'nom, lien', array('chatMois' => '1', 'premiere' => '1'), 'AND animal.id = photo.idAnimal');
+        $animal = $this->selectOne('animal', '*', array('chatMois' => '1'));
+        $animal['age_text'] = $this->interval($animal['age']);
+        return new Animal($animal);
     }
 
     /** 

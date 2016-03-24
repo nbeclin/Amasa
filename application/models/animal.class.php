@@ -31,7 +31,7 @@ class Animal extends SqlModel {
     private function load_photos(){
         if($this->id != null){
             require_once(__dir__ . '/photo.class.php');
-            $photos = $this->selectAll('photo', '*', array('idAnimal' => $this->id));
+            $photos = $this->selectAll('photo', '*', array('idAnimal' => $this->id), 'ORDER BY premiere DESC');
             foreach($photos as $photo){
                 array_push($this->photos, new Photo($photo));
             }
