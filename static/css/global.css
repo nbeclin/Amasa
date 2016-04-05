@@ -99,3 +99,7 @@ body.prod {
     padding:10px; 
     height:45px
 }
+
+.li-separation{
+    margin-left: 20px;
+}

@@ -10,7 +10,12 @@ class Pages extends Controller {
     }
 
     function index($action=false, $sub_param=false){
-         switch ($action) {
+        $user_id = $this->session->get('user');
+        if(!$user_id){
+            $this->redirect('admin/login');
+        }
+        
+        switch ($action) {
             case 'add':
                 $template = $this->loadView('admin/pages/form');
                 $template->set('static', $this->staticFiles);
@@ -20,8 +25,6 @@ class Pages extends Controller {
                 $template->set('pages', $pages->all);
 
                 $template->set('info_page', $this->loadModel('Page'));
-                
-                $template->render();
                 break;
 
         	case 'modify_page':
@@ -43,8 +46,6 @@ class Pages extends Controller {
                         $template->set('success', true);
                     }
                 }
-
-                $template->render();
         		break;
 
             case 'modify_sous_page':
@@ -66,8 +67,6 @@ class Pages extends Controller {
                         $template->set('success', true);
                     }
                 }
-
-                $template->render();
                 break;
 
         	default:
@@ -77,8 +76,11 @@ class Pages extends Controller {
 
 		        $pages = $this->loadModel('Page_all');
 		    	$template->set('pages', $pages->all);
-
-				$template->render();
 		}
+
+        $user = $this->loadModel('User_all'); 
+        $template->set('user', $user->load_one($this->session->get('user')));
+
+        $template->render();
     }
 }
