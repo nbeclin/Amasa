@@ -1,4 +1,5 @@
 <ul class="nav nav-pills nav-stacked">
+	<li class="active"><a href="/<?php echo BASE_URL ?>" class=""><span class="gras">Accueil</span></a></li>
 	<li class="active 1-1"><a href="#" class=""><span class="gras">AMASA</span></a></li>
 		<li class="ss-bt 1-2"><a href="/<?php echo BASE_URL ?>pages/association">L'association</a></li>
 		<li class="ss-bt 1-2"><a href="/<?php echo BASE_URL ?>pages/bureau">Le bureau</a></li>
