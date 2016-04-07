@@ -26,6 +26,9 @@
                     <li class="<?php echo $nav == 'animaux' ? 'active' : ''; ?>">
                         <a href="/<?php echo BASE_URL; ?>admin/animaux">Animaux</a>
                     </li>
+                    <li class="<?php echo $nav == 'photos' ? 'active' : ''; ?>">
+                        <a href="/<?php echo BASE_URL; ?>admin/photos">Photos</a>
+                    </li>
                     <li class="<?php echo $nav == 'logout' ? 'active' : ''; ?> li-separation">
                         <a href="/<?php echo BASE_URL; ?>admin/logout"><span class="glyphicon glyphicon-user" style="color:#088A29;"></span> <span style="color:#088A29;"><?php echo $user->login ?></span> <span class="glyphicon glyphicon-log-out"></span></a>
                     </li>

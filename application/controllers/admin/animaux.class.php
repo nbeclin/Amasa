@@ -31,6 +31,9 @@ class Animaux extends Controller {
 
                 $template->set('info_animal', $this->loadModel('Animal'));
 
+                $photos = $this->loadModel('Photo_all');
+                $template->set('photos', $photos->load_all_By_id());
+
                 if (isset($_POST['form_animal'])) {
                     
                     $template->set('post', $_POST);
@@ -54,6 +57,9 @@ class Animaux extends Controller {
                 
                 $animaux = $this->loadModel('Animal_all');
                 $template->set('animaux', $animaux->all);
+
+                $photos = $this->loadModel('Photo_all');
+                $template->set('photos', $photos->load_all_By_id());
                 
                 $template->set('info_animal', $animaux->load_one($sub_param));
 

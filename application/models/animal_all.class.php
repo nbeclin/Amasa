@@ -12,7 +12,7 @@ class Animal_all extends Model {
     * Function load_all - load all animal
     */
     private function load_all(){
-        foreach($this->selectAll('animal', '*') as $animal){
+        foreach($this->selectAll('animal', '*', null, 'ORDER BY nom') as $animal){
             $animal['age_text'] = $this->interval($animal['age']);
             array_push($this->all, new Animal($animal));
         }
@@ -132,7 +132,7 @@ class Animal_all extends Model {
 
         if($post['id'] != ''){
             $animal_id = $post['id'];
-            $this->delete('photo', array('idAnimal' => $animal_id));
+            $this->update('photo', array('idAnimal' => '0'), array('idAnimal' => $animal_id));
             $this->update('animal', $this->clean_post($post), array('id' => $animal_id));
         }
         else{

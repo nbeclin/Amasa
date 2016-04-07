@@ -1,4 +1,8 @@
-<h2>Modification de <?php echo $info_animal->nom ?></h2>
+<?php if ($info_animal->nom == '') : ?>
+	<h2>Ajout d'un animal</h2>
+<?php else : ?>
+	<h2>Modification de <?php echo $info_animal->nom ?></h2>
+<?php endif; ?>
 
 <?php if(isset($success)): ?>
     <div class="alert alert-success">
@@ -44,7 +48,15 @@
 					<label class="control-label">Image <?php echo $cpt+1 ?>
 					<?php echo $cpt==0 ? ' (Principale)' : '' ?>
 					</label>
-					<input type="text" name="liens[<?php echo $cpt+1 ?>]" class="form-control" value="<?php echo $cpt < sizeof($info_animal->photos) ? $info_animal->photos[$cpt]->lien : '' ?>" />
+					<select name="liens[<?php echo $cpt+1 ?>]" class="form-control">
+						<option value="">-- Choisir --</option>
+						<?php foreach ($photos as $photo) : ?>
+							<option <?php echo ($photo->idAnimal != 0) ? 'style="background-color:red;"' : ''; ?> value="<?php echo $photo->id ?>" <?php echo (($cpt < sizeof($info_animal->photos)) && ($info_animal->photos[$cpt]->id == $photo->id)) ? 'selected' : ''; ?>>
+								<?php echo $photo->lien ?>				
+							</option>
+						<?php endforeach; ?>
+					</select>
+					Activer : <input type="checkbox" name="actives[<?php echo $cpt+1 ?>]" <?php echo (($cpt < sizeof($info_animal->photos)) && ($info_animal->photos[$cpt]->id != 0)) ? 'checked' : ''; ?> />
 				</div>
 			<?php endfor; ?>
 		</div>
