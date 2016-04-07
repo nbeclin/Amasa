@@ -265,13 +265,22 @@ class Animal_all extends Model {
         return $result;
     }
 
-    public function upload_image(){
-        $width_std = 750;
-        $height_std = 500; 
+    public function upload_image($size){
+        
+        if ($size == "small"){
+            $width_std = 262;
+            $height_std = 175;
+            $name = '00-';
+        }
+        else if ($size == "normal"){
+            $width_std = 750;
+            $height_std = 500;
+            $name = '';
+        }
 
         $ratio = $width_std/$height_std;
 
-        $src_img = imagecreatefromjpeg("img/test2.jpg");  
+        $src_img = imagecreatefromjpeg("img/test2.jpg");
         
         if (imagesx($src_img)/imagesy($src_img) < $ratio){
             $height = $height_std;
@@ -293,7 +302,10 @@ class Animal_all extends Model {
         }
         
         $dst_img = imagecreatetruecolor($width_std,$height_std);
+        $color = imagecolortransparent($dst_img, 0);
         imagecopyresampled($dst_img,$src_img,$pos_x,$pos_y,0,0,$width,$height,imagesx($src_img),imagesy($src_img));
-        imagejpeg($dst_img,"img/test2_750x500.jpg");
+        imagepng($dst_img,"img/".$name."test2.png");
+
+        unset($src_img);
     }
 }
