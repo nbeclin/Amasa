@@ -125,6 +125,7 @@ class Animal_all extends Model {
         }
 
         $liens = $post['liens'];
+        $actives = isset($post['actives']) ? $post['actives'] : null;
 
         if($post['chatMois'] == 1){
             $this->update('animal', array('chatMois' => '0'), array('chatMois' => '1'));
@@ -132,23 +133,32 @@ class Animal_all extends Model {
 
         if($post['id'] != ''){
             $animal_id = $post['id'];
-            $this->update('photo', array('idAnimal' => '0'), array('idAnimal' => $animal_id));
+            $this->update('photo', array('idAnimal' => '0', 'premiere' => '0'), array('idAnimal' => $animal_id));
             $this->update('animal', $this->clean_post($post), array('id' => $animal_id));
         }
         else{
             $animal_id = $this->insertOne('animal', $this->clean_post($post));
         }
-        
-        foreach ($liens as $lien => $value) {
-            if($lien == 1){
-                $premiere = 1;
-            }
-            else {
-                $premiere = 0;
-            }
 
-            if($value != ''){
-               $this->image_register($animal_id, $value, $premiere);
+        $first = true;
+
+        foreach ($liens as $lien => $value) {
+            if (($value != '')&&(isset($actives[$lien]))){
+                if ($first){
+                    $data = array(
+                        'idAnimal' => $animal_id,
+                        'premiere' => '1'
+                    );
+                    $first = false;
+                }
+                else {
+                    $data = array(
+                        'idAnimal' => $animal_id,
+                        'premiere' => '0'
+                    );
+                }
+
+                $this->update('photo', $data, array('id' => $value));
             }
         }
 
@@ -189,6 +199,7 @@ class Animal_all extends Model {
         unset($post['form_animal']);
         unset($post['id']);
         unset($post['liens']);
+        unset($post['actives']);
         return $post;
     }
 
@@ -205,22 +216,6 @@ class Animal_all extends Model {
         }
         unset($post['tri']);
         return $post;
-    }
-
-    /** 
-    * Function image_register - BDD register
-    * @param $idAnimal - id of animal
-    * @param $lien - name of image
-    * @param $premiere - position of image
-    */
-    private function image_register($idAnimal, $lien, $premiere){
-        $values = array(
-                'idAnimal' => $idAnimal,
-                'lien' => $lien,
-                'premiere' => $premiere    
-            );
-
-        $this->insertOne('photo', $values);
     }
 
     /** 
@@ -263,49 +258,5 @@ class Animal_all extends Model {
         }
         
         return $result;
-    }
-
-    public function upload_image($size){
-        
-        if ($size == "small"){
-            $width_std = 262;
-            $height_std = 175;
-            $name = '00-';
-        }
-        else if ($size == "normal"){
-            $width_std = 750;
-            $height_std = 500;
-            $name = '';
-        }
-
-        $ratio = $width_std/$height_std;
-
-        $src_img = imagecreatefromjpeg("img/test2.jpg");
-        
-        if (imagesx($src_img)/imagesy($src_img) < $ratio){
-            $height = $height_std;
-            $width = $height_std * imagesx($src_img) / imagesy($src_img);
-            $pos_x = ($width_std - $width) / 2;
-            $pos_y = 0;
-        }
-        else if (imagesx($src_img)/imagesy($src_img) > $ratio){
-            $width = $width_std;
-            $height = $width_std * imagesy($src_img) / imagesx($src_img);
-            $pos_x = 0;
-            $pos_y = ($height_std - $height) / 2;
-        }
-        else {
-            $width = $width_std;
-            $height = $height_std;
-            $pos_x = 0;
-            $pos_y = 0;
-        }
-        
-        $dst_img = imagecreatetruecolor($width_std,$height_std);
-        $color = imagecolortransparent($dst_img, 0);
-        imagecopyresampled($dst_img,$src_img,$pos_x,$pos_y,0,0,$width,$height,imagesx($src_img),imagesy($src_img));
-        imagepng($dst_img,"img/".$name."test2.png");
-
-        unset($src_img);
     }
 }

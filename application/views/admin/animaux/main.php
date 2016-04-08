@@ -48,7 +48,11 @@
 
 			<tr>
 				<td class="text-center">
-					<img src="/<?php echo BASE_URL ?>img/animaux/00-<?php echo $link ?>" alt="Amasa" class="img-circle" height="70" />
+					<?php if (isset($link)) : ?>
+						<img src="/<?php echo BASE_URL ?>img/animaux/00-<?php echo $link ?>" alt="Amasa" height="40" />
+					<?php else : ?>
+						Pas de photo
+					<?php endif; ?>
 				</td>
 				<td class="text-center">
 					<a href="<?php echo $animal->id ?>"><?php echo $animal->nom ?></a>
@@ -60,6 +64,8 @@
 					<a href="/<?php echo BASE_URL ?>admin/animaux/modify/<?php echo $animal->id ?>"><span class="glyphicon glyphicon-pencil"></span></a>
 				</td>
 			</tr>
+
+			<?php unset($link); ?>
 
         <?php endforeach; ?>
     </tbody>
