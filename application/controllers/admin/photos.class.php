@@ -14,13 +14,38 @@ class Photos extends Controller {
         if(!$user_id){
             $this->redirect('admin/login');
         }
+        
+        switch ($action) {
+            case 'add':
+                $template = $this->loadView('admin/photos/form');
+                $template->set('static', $this->staticFiles);
+                $template->set('nav', 'main');
 
-        $template = $this->loadView('admin/photos/main');
-        $template->set('static', $this->staticFiles);
-        $template->set('nav', 'main');
+                $photos = $this->loadModel('Photo_all');
 
-        $photos = $this->loadModel('Photo_all');
-        $template->set('photos', $photos->all);
+                if (isset($_POST['add_photo'])) {
+                    $template->set('post', $_POST);
+                    $post_result = $photos->register($_POST, $_FILES);
+                    if($post_result){
+                        $template->set('success', true);
+                    }
+                    else {
+                        $template->set('nosuccess', $photo->error);
+                    }
+                }                    
+                break;
+
+            case 'modify':
+                break;
+
+            default:
+                $template = $this->loadView('admin/photos/main');
+                $template->set('static', $this->staticFiles);
+                $template->set('nav', 'main');
+
+                $photos = $this->loadModel('Photo_all');
+                $template->set('photos', $photos->all);
+        }
 
         $user = $this->loadModel('User_all'); 
         $template->set('user', $user->load_one($this->session->get('user')));
