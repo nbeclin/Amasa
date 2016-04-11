@@ -25,17 +25,37 @@ class Photos extends Controller {
 
                 if (isset($_POST['add_photo'])) {
                     $template->set('post', $_POST);
+
                     $post_result = $photos->register($_POST, $_FILES);
-                    if($post_result){
-                        $template->set('success', true);
+                    
+                    if(isset($post_result['errors'])){
+                        $template->set('errors', $post_result['errors']);
                     }
                     else {
-                        $template->set('nosuccess', $photo->error);
+                        $template->set('success', true);
                     }
                 }                    
                 break;
 
             case 'modify':
+                $template = $this->loadView('admin/photos/form');
+                $template->set('static', $this->staticFiles);
+                $template->set('nav', 'main');
+
+                $photos = $this->loadModel('Photo_all');
+
+                if (isset($_POST['add_photo'])) {
+                    $template->set('post', $_POST);
+
+                    $post_result = $photos->register($_POST, $_FILES);
+                    
+                    if(isset($post_result['errors'])){
+                        $template->set('errors', $post_result['errors']);
+                    }
+                    else {
+                        $template->set('success', true);
+                    }
+                }                    
                 break;
 
             default:

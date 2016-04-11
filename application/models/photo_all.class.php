@@ -4,8 +4,11 @@ class Photo_all extends Model {
     public $all = array();
     public $errors = array();
     private $checks = array(
-        'file' => array('required' => true, 'error' => 'Fichier vide !'),
-        'link' => array('required' => true, 'error' => 'Lien vide !')
+        'file' =>           array('required' => true,   'error' => 'Fichier vide !'),
+        'link' =>           array('required' => true,   'error' => 'Lien vide !'),
+        'file_format' =>    array('required' => false,  'error' => 'Format fichier incorrect !'),
+        'recording' =>      array('required' => false,  'error' => 'Enregistrement fichier impossible !'),
+        'link_name' =>      array('required' => false,  'error' => 'Le lien existe déjà !')
         );
 
     public function __construct(){
@@ -28,18 +31,20 @@ class Photo_all extends Model {
     }
 
     public function register($post, $files){
-        $post = $this->clean_post($post);  
+        $post = $this->clean_post($post); 
+
         $this->check_errors($post, $files);
+        
         if(sizeof($this->errors) > 0){
             return array('errors' => $this->errors);
         }
-        var_dump($post);
+
 
         $repertory = "img/";
         
         if(isset($post) && $post['link'] != ''){
             $link = strtolower($post['link']);
-            $extension = strrchr($files['file']['link'], '.');
+            $extension = strrchr($files['file']['name'], '.');
 
             //Checking if the filename exists or not
             $is_result = array();
@@ -56,28 +61,20 @@ class Photo_all extends Model {
                         $result_norm = $this->upload_image($repertory.$link, $link, $extension, 'normal');
 
                         if(!$result_min || !$result_norm) {
-                            array_push($this->error, 'Format de fichier incorrect !');
-                            return false;  
+                            $this->errors['file_format'] = $this->checks['file_format']['error'];
+                            return array('errors' => $this->errors); 
                         }
                     }
                     else {
-                        array_push($this->error, 'Enregistrement fichier impossible !');
-                        return false;
+                        $this->errors['recording'] = $this->checks['recording']['error'];
+                        return array('errors' => $this->errors);
                     }
-                }
-                else {
-                    array_push($this->error, 'Fichier vide !');
-                    return false;
-                }                
+                }              
             }
             else {
-                array_push($this->error, 'Nom de fichier existant !');
-                return false;
+                $this->errors['link_name'] = $this->checks['link_name']['error'];
+                return array('errors' => $this->errors);
             }
-        }
-        else {
-            array_push($this->error, 'Lien vide !');
-            return false;
         }
         return true;
 
@@ -93,20 +90,11 @@ class Photo_all extends Model {
      * @return void
      */
     private function check_errors($data, $files){
-        foreach($this->checks as $field => $check){
-            if($check['required'] && $data[$field] == ''){
-                $this->errors[$field] = $check['error'];
-            }
-            if($check['required'] && $field == 'vlan'){
-                foreach($data[$field] as $key => $vlan){
-                    if($vlan == ''){
-                        $this->errors[$field] = $check['error'];
-                    }
-                    if($data['ip'][$key] == ''){
-                        $this->errors['ip'] = $this->checks['ip']['error'];
-                    }
-                }
-            }
+        if($data['link'] == '' && $this->checks['link']['required']){
+            $this->errors['link'] = $this->checks['link']['error'];
+        }
+        if($files['file']['tmp_name'] == '' && $this->checks['file']['required']){
+            $this->errors['file'] = $this->checks['file']['error'];
         }
     }
 
