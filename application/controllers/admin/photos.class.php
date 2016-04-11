@@ -43,8 +43,10 @@ class Photos extends Controller {
                 $template->set('nav', 'main');
 
                 $photos = $this->loadModel('Photo_all');
+                
+                $template->set('info_photo', $this->photos->load_one($params));
 
-                if (isset($_POST['add_photo'])) {
+                if (isset($_POST['modify_photo'])) {
                     $template->set('post', $_POST);
 
                     $post_result = $photos->register($_POST, $_FILES);

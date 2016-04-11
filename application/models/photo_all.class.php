@@ -23,12 +23,17 @@ class Photo_all extends Model {
     }
 
     public function load_all_By_id(){
-    	$pictures = array();
-    	foreach($this->selectAll('photo', '*', null, 'ORDER BY idAnimal, lien') as $photo){
+        $pictures = array();
+        foreach($this->selectAll('photo', '*', null, 'ORDER BY idAnimal, lien') as $photo){
             array_push($pictures, new Photo($photo));
         }
-    	return $pictures;
+        return $pictures;
     }
+
+    public function load_one($id){
+        return new Photo($this->selectOne('photo', '*', array('id' => $id)));
+    }
+
 
     public function register($post, $files){
         $post = $this->clean_post($post); 
