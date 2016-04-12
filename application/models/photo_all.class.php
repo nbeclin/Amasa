@@ -36,8 +36,6 @@ class Photo_all extends Model {
 
 
     public function register($post, $files){
-        $post = $this->clean_post($post); 
-
         $this->check_errors($post, $files);
         
         if(sizeof($this->errors) > 0){
@@ -45,7 +43,7 @@ class Photo_all extends Model {
         }
 
 
-        $repertory = "img/";
+        $repertory = "img/animaux/";
         
         if(isset($post) && $post['link'] != ''){
             $link = strtolower($post['link']);
@@ -53,22 +51,25 @@ class Photo_all extends Model {
 
             //Checking if the filename exists or not
             $is_result = array();
-            foreach($this->selectAll('photo', '*', array('lien' => $link.$extension)) as $photo){
-                array_push($is_result, new Photo($photo));
+            
+            if($post['id'] == ''){
+                foreach($this->selectAll('photo', '*', array('lien' => $link.$extension)) as $photo){
+                    array_push($is_result, new Photo($photo));
+                }
             }
-
 
             if (empty($is_result)) {
                 if(isset($files['file']) && $files['file']['tmp_name'] != '') {
                     if(move_uploaded_file($files['file']['tmp_name'], $repertory.$link))
                     {
-                        $result_min = $this->upload_image($repertory.$link, $link, $extension, 'small');
-                        $result_norm = $this->upload_image($repertory.$link, $link, $extension, 'normal');
+                        $result_min = $this->upload_image($repertory.$link, $link, $extension, 'small', $repertory);
+                        $result_norm = $this->upload_image($repertory.$link, $link, $extension, 'normal', $repertory);
 
                         if(!$result_min || !$result_norm) {
                             $this->errors['file_format'] = $this->checks['file_format']['error'];
                             return array('errors' => $this->errors); 
                         }
+                        unlink($repertory.$link);
                     }
                     else {
                         $this->errors['recording'] = $this->checks['recording']['error'];
@@ -81,11 +82,18 @@ class Photo_all extends Model {
                 return array('errors' => $this->errors);
             }
         }
-        return true;
 
-        
-        //$this->upload_image($files['file']['tmp_name'], $post['name'], 'small');
-        //return true;
+        if($post['id'] != ''){
+            $photo_id = $post['id'];
+            $this->update('photo', array('lien' => $link.$extension), array('id' => $photo_id));
+            unlink($repertory.$post['old_link']);
+            unlink($repertory."00-".$post['old_link']);
+        }
+        else{
+            $photo_id = $this->insertOne('photo', array('lien' => $link.$extension));
+        }
+
+        return true;
     }
 
     /**
@@ -103,7 +111,7 @@ class Photo_all extends Model {
         }
     }
 
-    private function upload_image($file, $name, $extension, $size){
+    private function upload_image($file, $name, $extension, $size, $repertory){
         
         if ($size == "small"){
             $width_std = 262;
@@ -139,29 +147,38 @@ class Photo_all extends Model {
 
         }
         
-        if (imagesx($src_img)/imagesy($src_img) < $ratio){
-            $height = $height_std;
-            $width = $height_std * imagesx($src_img) / imagesy($src_img);
+        if (imagesx($src_img) <= $width_std && imagesy($src_img) <= $height_std) {
+            $height = imagesy($src_img);
+            $width = imagesx($src_img);
             $pos_x = ($width_std - $width) / 2;
-            $pos_y = 0;
-        }
-        else if (imagesx($src_img)/imagesy($src_img) > $ratio){
-            $width = $width_std;
-            $height = $width_std * imagesy($src_img) / imagesx($src_img);
-            $pos_x = 0;
             $pos_y = ($height_std - $height) / 2;
         }
         else {
-            $width = $width_std;
-            $height = $height_std;
-            $pos_x = 0;
-            $pos_y = 0;
+            if (imagesx($src_img)/imagesy($src_img) < $ratio){
+                $width = $height_std * imagesx($src_img) / imagesy($src_img);
+                $height = $height_std;
+                $pos_x = ($width_std - $width) / 2;
+                $pos_y = 0;
+            }
+            else if (imagesx($src_img)/imagesy($src_img) > $ratio){
+                $width = $width_std;
+                $height = $width_std * imagesy($src_img) / imagesx($src_img);
+                $pos_x = 0;
+                $pos_y = ($height_std - $height) / 2;
+            }
+            else {
+                $width = $width_std;
+                $height = $height_std;
+                $pos_x = 0;
+                $pos_y = 0;
+            }
         }
+        
         
         $dst_img = imagecreatetruecolor($width_std,$height_std);
         $color = imagecolortransparent($dst_img, 0);
         imagecopyresampled($dst_img,$src_img,$pos_x,$pos_y,0,0,$width,$height,imagesx($src_img),imagesy($src_img));
-        imagepng($dst_img,"img/".$name);
+        imagepng($dst_img,$repertory.$name.$extension);
 
         unset($src_img);
 

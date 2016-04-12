@@ -23,7 +23,9 @@ class Photos extends Controller {
 
                 $photos = $this->loadModel('Photo_all');
 
-                if (isset($_POST['add_photo'])) {
+                $template->set('info_photo', $this->loadModel('Photo'));
+
+                if (isset($_POST['form_photo'])) {
                     $template->set('post', $_POST);
 
                     $post_result = $photos->register($_POST, $_FILES);
@@ -44,9 +46,9 @@ class Photos extends Controller {
 
                 $photos = $this->loadModel('Photo_all');
                 
-                $template->set('info_photo', $this->photos->load_one($params));
+                $template->set('info_photo', $photos->load_one($sub_param));
 
-                if (isset($_POST['modify_photo'])) {
+                if (isset($_POST['form_photo'])) {
                     $template->set('post', $_POST);
 
                     $post_result = $photos->register($_POST, $_FILES);
