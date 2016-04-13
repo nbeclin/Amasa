@@ -30,7 +30,7 @@
                     </div>
                     <div class="row" >
                         <div class="col-md-12">
-                            <input type="submit" name="submit_form_contact" class="btn btn-primary pull-right" value="Enregistrer" />
+                            <input type="submit" name="submit_form_contact" class="btn btn-primary pull-right" value="Envoyer" />
                         </div>
                     </div>
                 </form>
