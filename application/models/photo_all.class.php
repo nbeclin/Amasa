@@ -85,12 +85,12 @@ class Photo_all extends Model {
 
         if($post['id'] != ''){
             $photo_id = $post['id'];
-            $this->update('photo', array('lien' => $link.$extension), array('id' => $photo_id));
+            $this->update('photo', array('lien' => $link.'.png'), array('id' => $photo_id));
             unlink($repertory.$post['old_link']);
             unlink($repertory."00-".$post['old_link']);
         }
         else{
-            $photo_id = $this->insertOne('photo', array('lien' => $link.$extension));
+            $photo_id = $this->insertOne('photo', array('lien' => $link.'.png'));
         }
 
         return true;
@@ -178,7 +178,7 @@ class Photo_all extends Model {
         $dst_img = imagecreatetruecolor($width_std,$height_std);
         $color = imagecolortransparent($dst_img, 0);
         imagecopyresampled($dst_img,$src_img,$pos_x,$pos_y,0,0,$width,$height,imagesx($src_img),imagesy($src_img));
-        imagepng($dst_img,$repertory.$name.$extension);
+        imagepng($dst_img,$repertory.$name.'.png');
 
         unset($src_img);
 
