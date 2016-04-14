@@ -138,6 +138,26 @@
     
     <?php include 'header_end.tpl.php' ?>
 
+    <?php if (isset($result_form_contact['error'])): ?>
+        <div class="container">
+            <div class="row">
+                <div class="alert alert-danger">
+                    <?php echo $result_form_contact['error'] ?>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+        
+    <?php if (isset($result_form_contact['success'])) : ?>
+        <div class="container">
+            <div class="row">
+                <div class="alert alert-success">
+                    <?php echo $result_form_contact['success'] ?>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+
     <div class="container">
         <div class="row">
             <!-- Loading menu -->

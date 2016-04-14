@@ -12,24 +12,11 @@ class Pages extends Controller {
     function index($action=false, $sub_param=false){
 
         if (isset($_POST['submit_form_contact'])) {
-            if (isset($_POST['mail'])){
-                $_POST['subject'] = '[MESSAGE FROM WEBSITE] '.$_POST['subject'].' - '.$_POST['mail'].'';
-            }
-            else {
-                $_POST['subject'] = '[MESSAGE FROM WEBSITE] '.$_POST['subject'].'';
-            }
-                
-            if ($_POST['note'] == '') {
-                echo '<div class="alert alert-danger" role="alert"><h4>Votre message n\'a pas été envoyé : message vide !</h4></div>';
-            }
-            else {
-                if (mail('31pattesdamour@gmail.com', $_POST['subject'], $_POST['note'])) {
-                    echo '<div class="alert alert-success" role="alert"><h4>Message envoyé : nous vous apporterons une réponse dans les meilleurs délais !</h4></div>';
-                }
-                else {
-                    echo '<div class="alert alert-danger" role="alert"><h4>Service momentanément indisponnible : merci de réessayer ultérieurement !</h4></div>';
-                }
-            }
+            $pages = $this->loadModel('Page_all');
+            $result_form_contact = $pages->send_form_contact($_POST);
+        }
+        else {
+            $result_form_contact = null;
         }
     	
         $animals = $this->loadModel('Animal_all');
@@ -101,6 +88,7 @@ class Pages extends Controller {
         $template->set('static', $this->staticFiles);
         $template->addCss('style', 'css');
 
+        $template->set('result_form_contact', $result_form_contact);
         $template->set('pet_of_the_month', $animals->pet_of_the_month());
         $template->render();
     }

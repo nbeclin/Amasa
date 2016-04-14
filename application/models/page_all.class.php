@@ -49,4 +49,37 @@ class Page_all extends Model {
         }
         return true;
     }
+
+    public function send_form_contact($post){
+        if (isset($post['subject'])){
+            $subject = $post['subject'];
+        }
+        else {
+            $subject = '';
+        }
+
+        if (isset($post['mail'])){
+            $subject = '[MESSAGE FROM WEBSITE] '.$subject.' - '.$post['mail'].'';
+        }
+        else {
+            $subject = '[MESSAGE FROM WEBSITE] '.$subject.'';
+        }
+        
+        if (isset($post['note'])){
+            if ($post['note'] == '') {
+                return array ('error' => 'Votre message n\'a pas été envoyé : message vide !');
+            }
+            else {
+                if (mail('31pattesdamour@gmail.com', $subject, $post['note'], 'Bcc: nicolas.beclin@gmail.com')) {
+                    return array ('success' => 'Message envoyé : nous vous apporterons une réponse dans les meilleurs délais !');
+                }
+                else {
+                    return array ('error' => 'Service momentanément indisponnible : merci de réessayer ultérieurement !');
+                }
+            }
+        }
+        else {
+            return array ('error' => 'Votre message n\'a pas été envoyé : message vide !');
+        }
+    }
 }
