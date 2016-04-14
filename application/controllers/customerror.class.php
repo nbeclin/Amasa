@@ -13,7 +13,6 @@ class CustomError extends Controller {
         $template->set('nav', null);
         
         $user = $this->loadModel('User_all'); 
-        var_dump($this->session->get('user'));
         $template->set('user', ($this->session->get('user')) ? $user->load_one($this->session->get('user')) : $this->loadModel('User'));
         
         $template->render();
