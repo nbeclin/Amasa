@@ -29,7 +29,7 @@
                     <li class="<?php echo $nav == 'photos' ? 'active' : ''; ?>">
                         <a href="/<?php echo BASE_URL; ?>admin/photos">Photos</a>
                     </li>
-                    <li class="<?php echo $nav == 'stats' ? 'active' : ''; ?>">
+                    <li class="<?php echo $nav == 'stats' ? 'active' : ''; ?> li-separation">
                         <a href="/<?php echo BASE_URL; ?>admin/stats"><span class="glyphicon glyphicon-stats"></span></a>
                     </li>
                     <li class="<?php echo $nav == 'logout' ? 'active' : ''; ?> li-separation">
