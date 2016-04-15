@@ -1,4 +1,4 @@
-<h2>Statistique</h2>
+<h2>Statistiques</h2>
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
