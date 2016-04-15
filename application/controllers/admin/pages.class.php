@@ -19,7 +19,7 @@ class Pages extends Controller {
             case 'add':
                 $template = $this->loadView('admin/pages/form');
                 $template->set('static', $this->staticFiles);
-                $template->set('nav', 'main');
+                $template->set('nav', 'pages');
 
                 $pages = $this->loadModel('Page_all');
                 $template->set('pages', $pages->all);
@@ -30,7 +30,7 @@ class Pages extends Controller {
         	case 'modify_page':
                 $template = $this->loadView('admin/pages/form');
 		        $template->set('static', $this->staticFiles);
-		        $template->set('nav', 'main');
+		        $template->set('nav', 'pages');
 
 		        $pages = $this->loadModel('Page_all');
                 $template->set('pages', $pages->all);
@@ -51,7 +51,7 @@ class Pages extends Controller {
             case 'modify_sous_page':
                 $template = $this->loadView('admin/pages/form');
                 $template->set('static', $this->staticFiles);
-                $template->set('nav', 'main');
+                $template->set('nav', 'pages');
 
                 $pages = $this->loadModel('Page_all');
                 $template->set('pages', $pages->all);
@@ -72,7 +72,7 @@ class Pages extends Controller {
         	default:
 		    	$template = $this->loadView('admin/pages/main');
 		        $template->set('static', $this->staticFiles);
-		        $template->set('nav', 'main');
+		        $template->set('nav', 'pages');
 
 		        $pages = $this->loadModel('Page_all');
 		    	$template->set('pages', $pages->all);

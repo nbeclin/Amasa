@@ -19,7 +19,7 @@ class Photos extends Controller {
             case 'add':
                 $template = $this->loadView('admin/photos/form');
                 $template->set('static', $this->staticFiles);
-                $template->set('nav', 'main');
+                $template->set('nav', 'photos');
 
                 $photos = $this->loadModel('Photo_all');
 
@@ -42,7 +42,7 @@ class Photos extends Controller {
             case 'modify':
                 $template = $this->loadView('admin/photos/form');
                 $template->set('static', $this->staticFiles);
-                $template->set('nav', 'main');
+                $template->set('nav', 'photos');
 
                 $photos = $this->loadModel('Photo_all');
                 
@@ -65,7 +65,7 @@ class Photos extends Controller {
             default:
                 $template = $this->loadView('admin/photos/main');
                 $template->set('static', $this->staticFiles);
-                $template->set('nav', 'main');
+                $template->set('nav', 'photos');
 
                 $photos = $this->loadModel('Photo_all');
                 $template->set('photos', $photos->all);

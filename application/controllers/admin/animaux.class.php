@@ -20,7 +20,7 @@ class Animaux extends Controller {
         		$template = $this->loadView('admin/animaux/form');
 
 		        $template->set('static', $this->staticFiles);
-		        $template->set('nav', 'main');
+		        $template->set('nav', 'animaux');
 
 		        $template->addJs('moment/moment', 'vendor');
 		        $template->addJs('datetimepicker/datetimepicker', 'vendor');
@@ -49,7 +49,7 @@ class Animaux extends Controller {
                 $template = $this->loadView('admin/animaux/form');
                 
                 $template->set('static', $this->staticFiles);
-                $template->set('nav', 'main');
+                $template->set('nav', 'animaux');
 
                 $template->addJs('moment/moment', 'vendor');
                 $template->addJs('datetimepicker/datetimepicker', 'vendor');
@@ -77,7 +77,7 @@ class Animaux extends Controller {
         	default:
 		        $template = $this->loadView('admin/animaux/main');
 		        $template->set('static', $this->staticFiles);
-		        $template->set('nav', 'main');
+		        $template->set('nav', 'animaux');
 
                 $animaux = $this->loadModel('Animal_all');
                 

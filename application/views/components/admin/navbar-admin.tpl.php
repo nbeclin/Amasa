@@ -17,7 +17,7 @@
                         <a href="/<?php echo BASE_URL; ?>admin/login"><span class="glyphicon glyphicon-user" style="color:#8A0808;"></span> <span class="glyphicon glyphicon-log-in"></span></a>
                     </li>
                     <?php else : ?>
-                    <li class="<?php echo $nav == 'pages' ? 'active' : ''; ?>">
+                    <li class="">
                         <a href="/<?php echo BASE_URL; ?>" target="_blank"><span class="glyphicon glyphicon-eye-open" style="color:#81DAF5;"></span></a>
                     </li>
                     <li class="<?php echo $nav == 'pages' ? 'active' : ''; ?> li-separation">
