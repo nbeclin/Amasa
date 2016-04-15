@@ -18,6 +18,15 @@ class Pages extends Controller {
         else {
             $result_form_contact = null;
         }
+
+        $stats = $this->loadModel('Stat_all');
+
+        if (isset($_SERVER['HTTP_REMOTE_IP'])){
+            $stats->register($_SERVER['HTTP_REMOTE_IP']);
+        }
+        else {
+            $stats->register('0.0.0.0');
+        }    
     	
         $animals = $this->loadModel('Animal_all');
 
