@@ -111,14 +111,14 @@ class Animal_all extends Model {
     */
     public function register($post){
         if($post['age'] == ''){
-            $post['age'] = '0000-00-00';
+            $post['age'] = 'NULL';
         }
         else {
             $post['age'] = $this->date_conversion_datetime($post['age']);
         }
-
+        var_dump($post);
         if($post['anneeAdoption'] == ''){
-            $post['anneeAdoption'] = '0000-00-00';
+            $post['anneeAdoption'] = 'NULL';
         }
         else {
             $post['anneeAdoption'] = $this->date_conversion_datetime($post['anneeAdoption']);
@@ -171,7 +171,7 @@ class Animal_all extends Model {
     * @return string - fr date format 
     */
     private function date_conversion_fr($dateToConvert){
-        if ($dateToConvert == '0000-00-00 00:00:00.0' || $dateToConvert == '0000-00-00' || $dateToConvert == '' || $dateToConvert == '0001-11-30 00:00:00' || $dateToConvert == '2015-00-00 00:00:00'){
+        if ($dateToConvert == null){
             return null;
         }
         else {
@@ -225,7 +225,11 @@ class Animal_all extends Model {
     */
     private function interval($date) {      
         $datenow = new DateTime("now");
-        $date = new DateTime($date);
+        if ($date == null){
+            return '?';
+        } else {
+            $date = new DateTime($date);
+        }
         
         $interval = date_diff($datenow, $date);
         
