@@ -178,7 +178,7 @@
 				</div>
 				<div class="radio">
 					<label>
-						<input type="radio" name="chatMois" value="0" <?php echo $info_animal->chatMois == '0' ? 'checked' : ''; ?>>
+						<input type="radio" name="chatMois" value="0" <?php echo $info_animal->chatMois != '1' ? 'checked' : ''; ?>>
 						Non
 					</label>
 				</div>
