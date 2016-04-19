@@ -111,21 +111,20 @@ class Animal_all extends Model {
     */
     public function register($post){
         if($post['age'] == ''){
-            $post['age'] = 'NULL';
+            unset($post['age']);
         }
         else {
             $post['age'] = $this->date_conversion_datetime($post['age']);
         }
-        var_dump($post);
+
         if($post['anneeAdoption'] == ''){
-            $post['anneeAdoption'] = 'NULL';
+            unset($post['anneeAdoption']);
         }
         else {
             $post['anneeAdoption'] = $this->date_conversion_datetime($post['anneeAdoption']);
         }
 
         $liens = $post['liens'];
-        $actives = isset($post['actives']) ? $post['actives'] : null;
 
         if($post['chatMois'] == 1){
             $this->update('animal', array('chatMois' => '0'), array('chatMois' => '1'));
@@ -133,6 +132,14 @@ class Animal_all extends Model {
 
         if($post['id'] != ''){
             $animal_id = $post['id'];
+
+            if (!isset($post['age'])){
+                $this->raw('UPDATE `animal` SET `age` = NULL WHERE `id` = '.$animal_id.'', false);
+            }
+            if (!isset($post['anneeAdoption'])){
+                $this->raw('UPDATE `animal` SET `anneeAdoption` = NULL WHERE `id` = '.$animal_id.'', false);
+            }
+
             $this->update('photo', array('idAnimal' => '0', 'premiere' => '0'), array('idAnimal' => $animal_id));
             $this->update('animal', $this->clean_post($post), array('id' => $animal_id));
         }
@@ -143,7 +150,7 @@ class Animal_all extends Model {
         $first = true;
 
         foreach ($liens as $lien => $value) {
-            if (($value != '')&&(isset($actives[$lien]))){
+            if ($value != ''){
                 if ($first){
                     $data = array(
                         'idAnimal' => $animal_id,
@@ -199,7 +206,6 @@ class Animal_all extends Model {
         unset($post['form_animal']);
         unset($post['id']);
         unset($post['liens']);
-        unset($post['actives']);
         return $post;
     }
 

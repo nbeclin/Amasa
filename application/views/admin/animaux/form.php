@@ -56,7 +56,6 @@
 							</option>
 						<?php endforeach; ?>
 					</select>
-					Activer : <input type="checkbox" name="actives[<?php echo $cpt+1 ?>]" <?php echo (($cpt < sizeof($info_animal->photos)) && ($info_animal->photos[$cpt]->id != 0)) ? 'checked' : ''; ?> />
 				</div>
 			<?php endfor; ?>
 		</div>
