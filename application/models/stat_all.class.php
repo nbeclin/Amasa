@@ -5,13 +5,13 @@ class Stat_all extends Model {
 
     public function __construct(){
         parent::__construct();
-        $this->load_all();
     }
 
-    private function load_all(){
-        foreach($this->selectAll('stat', '*') as $stat){
+    public function load_all(){
+        foreach($this->selectAll('stat', '*', null, 'ORDER BY date DESC') as $stat){
             array_push($this->all, new Stat($stat));
         }
+        return $this->all;
     }
 
     public function register($ip){

@@ -20,7 +20,7 @@ class Stats extends Controller {
         $template->set('nav', 'stats');
 
         $stats = $this->loadModel('Stat_all');
-        $template->set('stats', $stats->all);
+        $template->set('stats', $stats->load_all());
 
         $user = $this->loadModel('User_all'); 
         $template->set('user', $user->load_one($this->session->get('user')));
