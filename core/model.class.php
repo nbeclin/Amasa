@@ -179,6 +179,20 @@ class Model {
         }
     }
 
+    public function raw($query, $result=true){
+        try {
+            $this->query($query);
+            if ($result) {
+                return $this->resultSet();
+            }
+            return $this->execute();
+
+        }
+        catch(Exception $e){
+            exit($e->getMessage());
+        }
+    }
+
     private function query($query){
         $this->stmt = $this->dbh->prepare($query);
     }
