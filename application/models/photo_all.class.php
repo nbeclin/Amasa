@@ -174,9 +174,14 @@ class Photo_all extends Model {
             }
         }
         
-        
+        // Creating a picture with black background and desired dimensions
         $dst_img = imagecreatetruecolor($width_std,$height_std);
-        $color = imagecolortransparent($dst_img, 0);
+        // Filling the picture with green color
+        $bg = imagecolorallocate($dst_img, 19, 247, 1);
+        imagefill($dst_img,0,0,$bg);
+        // Green change to transparency
+        $color = imagecolortransparent($dst_img, $bg);
+        // Recording the picture
         imagecopyresampled($dst_img,$src_img,$pos_x,$pos_y,0,0,$width,$height,imagesx($src_img),imagesy($src_img));
         imagepng($dst_img,$repertory.$name.'.png');
 
