@@ -10,7 +10,7 @@
 	                    <h4><span class ="<?php echo ($animal->sexe == 1) ? 'bleu' : 'rose' ?> gras"><?php echo $animal->nom ?></span></h4>
 	                </div>
 	                <div class="modal-body">
-	                   <img class="img-responsive" src="/<?php echo BASE_URL ?>img/animaux/<?php echo $animal->photos[0]->lien ?>" alt="amasa" />
+	                   <img class="img-responsive" src="/<?php echo BASE_URL ?>img/animaux/<?php echo (isset($animal->photos[0])) ? $animal->photos[0]->lien : '' ?>" alt="amasa" />
 	                </div>
 	            </div>
 	        </div>
@@ -20,7 +20,7 @@
 		<?php endif; ?>
 			<div class="col-md-4 img-portfolio">
 				<a href="#" data-toggle="modal" data-target="#form_animal<?php echo $animal->id ?>">
-					<img class="img-responsive img-hover" src="/<?php echo BASE_URL ?>img/animaux/00-<?php echo $animal->photos[0]->lien ?>" alt="amasa" />
+					<img class="img-responsive img-hover" src="/<?php echo BASE_URL ?>img/animaux/00-<?php echo (isset($animal->photos[0])) ? $animal->photos[0]->lien : '' ?>" alt="amasa" />
 				</a>
 				<h3>
 					<span class ="<?php echo ($animal->sexe == 1) ? 'bleu' : 'rose' ?> gras"><?php echo $animal->nom ?></span>
