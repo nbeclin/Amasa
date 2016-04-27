@@ -17,26 +17,36 @@
 								<div class="ekko-lightbox-container">
 									<div id="carousel-example-generic<?php echo $animal->id ?>" class="carousel slide" data-ride="carousel">
 										<ol class="carousel-indicators">
-											<?php for($i=0;$i<sizeof($animal->photos);$i++) : ?>
-												<?php if($i == 0) : ?>
-													<li data-target="#carousel-example-generic<?php echo $animal->id ?>" data-slide-to="<?php echo $i ?>" class="active"></li>
-												<?php else : ?>
-													<li data-target="#carousel-example-generic<?php echo $animal->id ?>" data-slide-to="<?php echo $i ?>"></li>
-												<?php endif; ?>
-											<?php endfor; ?>
+											<?php if (sizeof($animal->photos) == 0) : ?>
+												<li data-target="#carousel-example-generic<?php echo $animal->id ?>" data-slide-to="0" class="active"></li>
+											<?php else : ?>
+												<?php for($i=0;$i<sizeof($animal->photos);$i++) : ?>
+													<?php if($i == 0) : ?>
+														<li data-target="#carousel-example-generic<?php echo $animal->id ?>" data-slide-to="<?php echo $i ?>" class="active"></li>
+													<?php else : ?>
+														<li data-target="#carousel-example-generic<?php echo $animal->id ?>" data-slide-to="<?php echo $i ?>"></li>
+													<?php endif; ?>
+												<?php endfor; ?>
+											<?php endif; ?>
 										</ol>
 										<div class="carousel-inner">
-											<?php for($i=0;$i<sizeof($animal->photos);$i++) : ?>
-												<?php if($i == 0) : ?>
-													<div class="item active">
-														<img class="img-responsive img-modal" src="/<?php echo BASE_URL ?>img/animaux/<?php echo $animal->photos[$i]->lien ?>" alt="Amasa">
-													</div>
-												<?php else : ?>
-													<div class="item">
-														<img class="img-responsive img-modal" src="/<?php echo BASE_URL ?>img/animaux/<?php echo $animal->photos[$i]->lien ?>" alt="Amasa">
-													</div>
-												<?php endif; ?>
-											<?php endfor; ?>
+											<?php if (sizeof($animal->photos) == 0) : ?>
+												<div class="item active">
+													<img class="img-responsive img-modal" src="/<?php echo BASE_URL ?>img/animaux/error.png" alt="Amasa">
+												</div>
+											<?php else : ?>
+												<?php for($i=0;$i<sizeof($animal->photos);$i++) : ?>
+													<?php if($i == 0) : ?>
+														<div class="item active">
+															<img class="img-responsive img-modal" src="/<?php echo BASE_URL ?>img/animaux/<?php echo $animal->photos[$i]->lien ?>" alt="Amasa">
+														</div>
+													<?php else : ?>
+														<div class="item">
+															<img class="img-responsive img-modal" src="/<?php echo BASE_URL ?>img/animaux/<?php echo $animal->photos[$i]->lien ?>" alt="Amasa">
+														</div>
+													<?php endif; ?>
+												<?php endfor; ?>
+											<?php endif; ?>
 										</div>
 
 										<!-- Controls -->
@@ -125,7 +135,7 @@
 		<?php endif; ?>
 			<div class="col-md-4 img-portfolio">
                 <a href="#" data-toggle="modal" data-target="#myModal<?php echo $animal->id ?>">
-                    <img class="img-responsive img-hover" src="/<?php echo BASE_URL ?>img/animaux/00-<?php echo $animal->photos[0]->lien ?>" alt="amasa" />
+                    <img class="img-responsive img-hover" src="/<?php echo BASE_URL ?>img/animaux/00-<?php echo isset($animal->photos[0]) ? $animal->photos[0]->lien : 'error.png' ?>" alt="amasa" />
                 </a>
                 <h3>
                     <span class ="<?php echo ($animal->sexe == 1) ? 'bleu' : 'rose' ?> gras"><?php echo $animal->nom ?></span>

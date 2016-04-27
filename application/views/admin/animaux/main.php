@@ -51,7 +51,7 @@
 					<?php if (isset($link)) : ?>
 						<img src="/<?php echo BASE_URL ?>img/animaux/00-<?php echo $link ?>" alt="Amasa" height="40" />
 					<?php else : ?>
-						Pas de photo
+						<img src="/<?php echo BASE_URL ?>img/animaux/00-error.png" alt="Amasa" height="40" />
 					<?php endif; ?>
 				</td>
 				<td class="text-center">
