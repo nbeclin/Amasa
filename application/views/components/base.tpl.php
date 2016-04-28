@@ -129,11 +129,11 @@
    
     <p class="text-center">
         <a href="#" data-toggle="modal" data-target="#pet_of_the_month_modal">
-            <img class="img-chat-mois img-circle" src="/<?php echo BASE_URL ?>img/animaux/00-<?php echo (isset($pet_of_the_month->photos[0])) ? $pet_of_the_month->photos[0]->lien : 'error.png' ?>" style="max-height: 100px; width: auto;" alt="amasa" />
+            <img class="img-chat-mois" style="border-radius: 200px 200px 200px 200px; -moz-border-radius: 200px 200px 200px 200px; -webkit-border-radius: 200px 200px 200px 200px; border: 3px solid #F46320; background-color: #F46320; max-height: 100px; width: auto;" src="/<?php echo BASE_URL ?>img/animaux/00-<?php echo (isset($pet_of_the_month->photos[0])) ? $pet_of_the_month->photos[0]->lien : 'error.png' ?>" style="max-height: 100px; width: auto;" alt="amasa" />
         </a>
     </p>
     <p class="text-center titre5">
-        <?php echo $pet_of_the_month->nom ?>
+        <span style="color : #F46320;"><?php echo $pet_of_the_month->nom ?></span>
     </p>
     
     <?php include 'header_end.tpl.php' ?>
