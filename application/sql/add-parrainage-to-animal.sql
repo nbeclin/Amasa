@@ -1,0 +1,1 @@
+ALTER TABLE `animal` ADD `parrainage` INT(11) NOT NULL DEFAULT '0' AFTER `chatMois`;
