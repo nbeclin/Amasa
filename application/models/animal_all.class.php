@@ -172,6 +172,12 @@ class Animal_all extends Model {
         return true;
     }
 
+    public function delete_one($animal_id){
+        $this->update('photo', array('idAnimal' => "0"), array('idAnimal' => $animal_id));
+
+        return $this->delete('animal', array('id' => $animal_id));
+    }
+
     /** 
     * Function date_conversion_fr
     * @param $dateToConvert - datetime format

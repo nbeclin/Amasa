@@ -1,6 +1,12 @@
 <a href="/<?php echo BASE_URL ?>admin/animaux/add" class="btn btn-success">Ajouter un animal</a>
 <h2>Gestion des animaux</h2>
 
+<?php if(isset($delete_success)): ?>
+    <div class="alert alert-warning">
+        Animal supprimé !
+    </div>
+<?php endif; ?>
+
 <form action="" class="form" method="post" enctype="multipart/form-data" style="margin-bottom:10px">
 	<div class="row">
 		<div class="col-md-7">
@@ -34,7 +40,8 @@
             <th class="text-center"></th>
             <th class="text-center">Animaux</th>
             <th class="text-center">Catégories</th>
-            <th class="text-center">Edit</th>
+            <th class="text-center"></th>
+            <th class="text-center"></th>
         </tr>
     </thead>
     <tbody>
@@ -46,7 +53,7 @@
         		<?php endif; ?>
         	<?php endforeach; ?>
 
-			<tr>
+			<tr class="animal-line" data-animal-id="<?php echo $animal->id ?>">
 				<td class="text-center">
 					<?php if (isset($link)) : ?>
 						<img src="/<?php echo BASE_URL ?>img/animaux/00-<?php echo $link ?>" alt="Amasa" height="40" />
@@ -61,8 +68,13 @@
 					<?php echo $animal->categorie ?>
 				</td>
 				<td class="text-center">
-					<a href="/<?php echo BASE_URL ?>admin/animaux/modify/<?php echo $animal->id ?>"><span class="glyphicon glyphicon-pencil"></span></a>
+					<a href="/<?php echo BASE_URL ?>admin/animaux/modify/<?php echo $animal->id ?>"><span class="glyphicon glyphicon-pencil" style="color:#AEB404;"></span></a>
 				</td>
+				<td class="text-center actions">
+                    <a href="/<?php echo BASE_URL ?>admin/animaux/delete/<?php echo $animal->id ?>" class="delete-animal" data-animal-id="<?php echo $animal->id ?>">
+                        <span class="glyphicon glyphicon-floppy-remove" style="color:#FE2E2E;"></span>
+                    </a>
+                </td>
 			</tr>
 
 			<?php unset($link); ?>

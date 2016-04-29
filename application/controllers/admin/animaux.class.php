@@ -74,9 +74,34 @@ class Animaux extends Controller {
                 }
                 break;
 
+            case 'delete':
+                $template = $this->loadView('admin/animaux/main');
+                $template->set('static', $this->staticFiles);
+                $template->addJs('list-animal', 'js');
+                $template->set('nav', 'animaux');
+
+                $animaux = $this->loadModel('Animal_all');
+
+                if ($animaux->delete_one($sub_param)){
+                     $template->set('delete_success', true);
+                }
+                
+                $animaux = $this->loadModel('Animal_all');
+                
+                if (isset($_POST['tri'])) {
+                    $template->set('post', $_POST);
+                    $template->set('animaux', $animaux->tri($_POST));
+                }
+                else {
+                    $template->set('post', null);
+                    $template->set('animaux', $animaux->all);
+                }
+                break;
+
         	default:
 		        $template = $this->loadView('admin/animaux/main');
 		        $template->set('static', $this->staticFiles);
+                $template->addJs('list-animal', 'js');
 		        $template->set('nav', 'animaux');
 
                 $animaux = $this->loadModel('Animal_all');
