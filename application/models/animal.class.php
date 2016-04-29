@@ -15,6 +15,7 @@ class Animal extends SqlModel {
     public $categorie;
     public $anneeAdoption;
     public $chatMois;
+    public $parrainage;
     public $photos = array();
     public $age_text;
 

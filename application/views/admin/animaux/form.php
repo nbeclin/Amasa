@@ -167,19 +167,40 @@
 				<label class="control-label">Commentaire</label>
 				<textarea name="commentaire" class="form-control" rows="25"><?php echo $info_animal->commentaire ?></textarea>
 			</div>
-			<div class="form-group">
-				<label class="control-label">Star du mois</label>
-				<div class="radio">
-					<label>
-						<input type="radio" name="chatMois" value="1" <?php echo $info_animal->chatMois == '1' ? 'checked' : ''; ?>>
-						Oui
-					</label>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group">
+						<label class="control-label">Star du mois</label>
+						<div class="radio">
+							<label>
+								<input type="radio" name="chatMois" value="1" <?php echo $info_animal->chatMois == '1' ? 'checked' : ''; ?>>
+								Oui
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio" name="chatMois" value="0" <?php echo $info_animal->chatMois != '1' ? 'checked' : ''; ?>>
+								Non
+							</label>
+						</div>
+					</div>
 				</div>
-				<div class="radio">
-					<label>
-						<input type="radio" name="chatMois" value="0" <?php echo $info_animal->chatMois != '1' ? 'checked' : ''; ?>>
-						Non
-					</label>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label class="control-label">Parrainage</label>
+						<div class="radio">
+							<label>
+								<input type="radio" name="parrainage" value="1" <?php echo $info_animal->parrainage == '1' ? 'checked' : ''; ?>>
+								Oui
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio" name="parrainage" value="0" <?php echo $info_animal->parrainage != '1' ? 'checked' : ''; ?>>
+								Non
+							</label>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
