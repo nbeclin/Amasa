@@ -62,9 +62,25 @@ class Photos extends Controller {
                 }                    
                 break;
 
+            case 'delete':
+                $template = $this->loadView('admin/photos/main');
+                $template->set('static', $this->staticFiles);
+                $template->addJs('list-photo', 'js');
+                $template->set('nav', 'photos');
+
+                $photos = $this->loadModel('Photo_all');
+                if ($photos->delete_one($sub_param)){
+                    $template->set('delete_success', true);
+                }
+
+                $photos = $this->loadModel('Photo_all');
+                $template->set('photos', $photos->all);
+                break;
+
             default:
                 $template = $this->loadView('admin/photos/main');
                 $template->set('static', $this->staticFiles);
+                $template->addJs('list-photo', 'js');
                 $template->set('nav', 'photos');
 
                 $photos = $this->loadModel('Photo_all');

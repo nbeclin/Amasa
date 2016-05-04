@@ -5,12 +5,13 @@
         <tr>
             <th class="text-center">Photos</th>
             <th class="text-center">lien</th>
-            <th class="text-center">Edit</th>
+            <th class="text-center"></th>
+            <th class="text-center"></th>
         </tr>
     </thead>
     <tbody>
 		<?php foreach ($photos as $photo) : ?>	
-			<tr>
+			<tr class="photo-line" data-photo-id="<?php echo $photo->id ?>">
 				<td class="text-center">
 					<img src="/<?php echo BASE_URL ?>img/animaux/00-<?php echo $photo->lien ?>" alt="Amasa" height="30" />
 				</td>
@@ -18,8 +19,13 @@
 					<?php echo $photo->lien ?>
 				</td>
 				<td class="text-center">
-					<a href="/<?php echo BASE_URL ?>admin/photos/modify/<?php echo $photo->id ?>"><span class="glyphicon glyphicon-pencil"></span></a>
+					<a href="/<?php echo BASE_URL ?>admin/photos/modify/<?php echo $photo->id ?>"><span class="glyphicon glyphicon-pencil" style="color:#AEB404;"></span></a>
 				</td>
+				<td class="text-center actions">
+                    <a href="/<?php echo BASE_URL ?>admin/photos/delete/<?php echo $photo->id ?>" class="delete-photo" data-photo-id="<?php echo $photo->id ?>">
+                        <span class="glyphicon glyphicon-floppy-remove" style="color:#FE2E2E;"></span>
+                    </a>
+                </td>
 			</tr>
 		<?php endforeach; ?>
     </tbody>

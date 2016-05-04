@@ -96,6 +96,21 @@ class Photo_all extends Model {
         return true;
     }
 
+    public function delete_one($photo_id){
+        $repertory = "img/animaux/";
+
+        $photo = $this->load_one($photo_id);
+
+        if (file_exists($repertory.$photo->lien)){
+            unlink($repertory.$photo->lien);
+        }
+        if (file_exists($repertory."00-".$photo->lien)){
+            unlink($repertory."00-".$photo->lien);
+        }
+
+        return $this->delete('photo', array('id' => $photo_id));
+    }
+
     /**
      * Check if posted values are correct, depends on $checks property
      * @param  array $data The data to check, initialy $_POST
