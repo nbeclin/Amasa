@@ -140,7 +140,7 @@ class Photo_all extends Model {
 
         $ratio = $width_std/$height_std;
 
-        switch ($extension) {
+        switch (strtolower($extension)) {
             case '.jpg':   
                 $src_img = imagecreatefromjpeg($file);
                 break;
