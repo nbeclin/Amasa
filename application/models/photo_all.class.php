@@ -101,14 +101,19 @@ class Photo_all extends Model {
 
         $photo = $this->load_one($photo_id);
 
-        if (file_exists($repertory.$photo->lien)){
-            unlink($repertory.$photo->lien);
+        if ($photo->idAnimal != 0){
+            return array(false, $photo->idAnimal);
         }
-        if (file_exists($repertory."00-".$photo->lien)){
-            unlink($repertory."00-".$photo->lien);
-        }
+        else {
+            if (file_exists($repertory.$photo->lien)){
+                unlink($repertory.$photo->lien);
+            }
+            if (file_exists($repertory."00-".$photo->lien)){
+                unlink($repertory."00-".$photo->lien);
+            }
 
-        return $this->delete('photo', array('id' => $photo_id));
+            return array($this->delete('photo', array('id' => $photo_id)),$photo->idAnimal);
+        }
     }
 
     /**

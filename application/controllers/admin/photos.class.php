@@ -69,8 +69,16 @@ class Photos extends Controller {
                 $template->set('nav', 'photos');
 
                 $photos = $this->loadModel('Photo_all');
-                if ($photos->delete_one($sub_param)){
+
+                $result = $photos->delete_one($sub_param);
+
+                if ($result[0]){
                     $template->set('delete_success', true);
+                }
+                else {
+                    $template->set('delete_success', false);
+                    $animaux = $this->loadModel('Animal_all');
+                    $template->set('animal_selected',$animaux->load_one($result[1]));
                 }
 
                 $photos = $this->loadModel('Photo_all');

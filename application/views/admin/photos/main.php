@@ -1,5 +1,17 @@
 <a href="/<?php echo BASE_URL ?>admin/photos/add" class="btn btn-success">Ajouter une photo</a>
 <h2>Gestion des photos</h2>
+
+<?php if(isset($delete_success) && $delete_success): ?>
+    <div class="alert alert-warning">
+        Photo supprimée !
+    </div>
+<?php endif; ?>
+<?php if(isset($delete_success) && !$delete_success): ?>
+    <div class="alert alert-warning">
+        Photo non supprimée (en lien avec <a href="/<?php echo BASE_URL ?>admin/animaux/modify/<?php echo $animal_selected->id ?>"><?php echo $animal_selected->nom ?></a>) !
+    </div>
+<?php endif; ?>
+
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
