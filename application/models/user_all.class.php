@@ -49,7 +49,7 @@ class User_all extends Model {
             }
             $success = array('user_id' => $user['id']);
             $data = array(
-                'datetime'  => $this->escapeString(date('Y-m-d H:i:s')),
+                'datetime'  => date('Y-m-d H:i:s'),
                 'ip'    => $this->escapeString($this->getUserIp())
             );
             if(!$this->update('user', $data, array('id' => $user['id']))){
