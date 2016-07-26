@@ -77,6 +77,25 @@ class Pages extends Controller {
             
                 break;
 
+            case 'parrainer' :
+                $pages = $this->loadModel('Page_all');
+                $load_page = $pages->load_one_by_label($action, 'page');
+            
+                if($load_page->id == null){
+                    $template = $this->loadView('error404');
+                    $template->set('title', 'ERREUR 404');
+                    $template->set('nav', null);
+                }
+                else{
+                    $template = $this->loadView('front/pages/commun');
+                    $template->set('nav', 'main');       
+                    $template->set('info_page', $load_page);
+                }
+                $template->set('cpt', 0);
+                $template->set('animals', $animals->tri(array('parrainage' => '1')));
+                $template->set('parrainer', true);
+                break;
+
     		default:
                 $pages = $this->loadModel('Page_all');
                 $load_page = $pages->load_one_by_label($action, 'page');
