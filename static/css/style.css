@@ -417,6 +417,27 @@ html, body
 	padding-bottom:0px;
 }
 
+#contenu h6
+{
+	font-size: 21px;
+	font-family:Calibri;
+	text-align : center;
+	color:#F46320;
+	font-weight: bold;
+	
+	/*Marge extérieur*/
+	margin-left:0px;
+	margin-right:0px;
+	margin-top:0px;
+	margin-bottom:0px;
+	
+	/*Marge interieur*/
+	padding-left:0px;
+	padding-right:0px;
+	padding-top:0px;
+	padding-bottom:0px;
+}
+
 .nav-pills > li > a {
 	font-family:Sweeep;
 }
@@ -488,4 +509,10 @@ html, body
 .italic
 {
 	font-style : italic;
+}
+
+#parrainer{
+	margin-top:20px;
+	padding: 5px;
+	border: dotted 4px #2E3094;
 }

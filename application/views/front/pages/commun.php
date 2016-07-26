@@ -10,8 +10,8 @@
 	
 
 	<?php if (isset($parrainer)) : ?>
-		<br />
-		<h2>Nos animaux à l'adoption :</h2>
+		<div id="parrainer">
+		<h6>Nos animaux à parrainer</h6>
 		<br />
 		<?php foreach($animals as $animal) : ?>
 		<!-- Display modal of animal -->
@@ -183,5 +183,5 @@
 			}
 		?>
 	<?php endif; ?>	
-
+	</div>
 </div>
