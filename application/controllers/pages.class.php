@@ -73,7 +73,7 @@ class Pages extends Controller {
                 $template->set('selected', $animals->count_tri(array('categorie' => $categorie)));
                 $template->set('category', $this->params[0]);
                 $template->set('cpt', 0);
-                $template->set('animals', $animals->tri(array('categorie' => $categorie)));
+                $template->set('animals', $animals->tri(array('categorie' => $categorie),$this->page_selected()));
             
                 break;
 
@@ -91,6 +91,7 @@ class Pages extends Controller {
                     $template->set('nav', 'main');       
                     $template->set('info_page', $load_page);
                 }
+                
                 $template->set('cpt', 0);
                 $template->set('animals', $animals->tri(array('parrainage' => '1')));
                 $template->set('parrainer', true);

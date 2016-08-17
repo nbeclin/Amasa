@@ -34,6 +34,9 @@ class Animal_all extends Model {
             $other = 'AND anneeAdoption LIKE "%'.$post['anneeAdoption'].'%" ORDER BY nom';
             unset($post['anneeAdoption']);
         }
+        else {
+            $other = 'ORDER BY nom';
+        }
 
         if (!empty($post)) {
             foreach($this->selectAllLimit('animal', '*', $post, $other, $page) as $animal){
