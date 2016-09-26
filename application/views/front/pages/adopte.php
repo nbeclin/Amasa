@@ -1,5 +1,3 @@
-<?php include_once("analyticstracking.php") ?>
-
 <div id="contenu">
 	<h1><?php echo $selected ?> animaux adoptés en <?php echo $year ?></h1>
 

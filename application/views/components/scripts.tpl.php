@@ -16,3 +16,4 @@
 	</script>
 	<script type="text/javascript" src="/<?php echo BASE_URL.$static->js('banner', 'js'); ?>"></script>
     <?php echo $extra_js; ?>
+	<script type="text/javascript" src="/<?php echo BASE_URL.$static->js('analyticstracking', 'js'); ?>"></script>
