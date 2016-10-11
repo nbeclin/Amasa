@@ -22,6 +22,12 @@ class Pages extends Controller {
         $stats = $this->loadModel('Stat_all');
 
         if (isset($_SERVER['HTTP_REMOTE_IP'])){
+            //spam detected
+            $startip = explode('.', $_SERVER['HTTP_REMOTE_IP']);
+            $startip = $startip[0].$startip[1];
+            if ($startip == '188143'){
+                $this->redirect('error404');
+            }
             $stats->register($_SERVER['HTTP_REMOTE_IP']);
         }
         else {
