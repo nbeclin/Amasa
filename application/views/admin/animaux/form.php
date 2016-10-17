@@ -17,13 +17,19 @@
 				<label class="control-label">Nom</label>
 				<input type="text" name="nom" class="form-control" value="<?php echo $info_animal->nom ?>" />
 			</div>
+			<div class="form-group">
+				<label class="control-label">Catégorie</label>
+				<select name="type" class="form-control">
+					<option value="">-- Choisir --</option>
+					<option value="chat" <?php echo $info_animal->type == 'chat' ? 'selected' : ''; ?>>Chat</option>
+					<option value="chien" <?php echo $info_animal->type == 'chien' ? 'selected' : ''; ?>>Chien</option>
+				</select>
+			</div>
 		   <div class="form-group">
 				<label class="control-label">Catégorie</label>
 				<select name="categorie" class="form-control">
 					<option value="">-- Choisir --</option>
-					<option value="adoptionChaton" <?php echo $info_animal->categorie == 'adoptionChaton' ? 'selected' : ''; ?>>Adoption Chaton</option>
-					<option value="adoptionChat" <?php echo $info_animal->categorie == 'adoptionChat' ? 'selected' : ''; ?>>Adoption Chat</option>
-					<option value="adoptionChien" <?php echo $info_animal->categorie == 'adoptionChien' ? 'selected' : ''; ?>>Adoption Chien</option>
+					<option value="adoption" <?php echo $info_animal->categorie == 'adoption' ? 'selected' : ''; ?>>Adoption</option>
 					<option value="adopte" <?php echo $info_animal->categorie == 'adopte' ? 'selected' : ''; ?>>Adopté</option>
 					<option value="paradis" <?php echo $info_animal->categorie == 'paradis' ? 'selected' : ''; ?>>Paradis</option>
 				</select>

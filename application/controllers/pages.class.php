@@ -59,27 +59,29 @@ class Pages extends Controller {
 
                 switch ($this->params[0]){
                     case 'chat':
-                        $categorie = 'adoptionChat';
+                        $type = 'chat';
                         $title = 'Chats à l\'adoption';
                         break;
 
                     case 'chaton':
-                        $categorie = 'adoptionChaton';
+                        $type = 'chat';
                         $title = 'Chatons à l\'adoption';
                         break;
 
                     case 'chien':
-                        $categorie = 'adoptionChien';
+                        $type = 'chien';
                         $title = 'Chien à l\'adoption';
                         break;
                 }
+                
+                $categorie = 'adoption';
 
                 $template->set('title', $title);
                 $template->set('page', $this->page_selected());
-                $template->set('selected', $animals->count_tri(array('categorie' => $categorie)));
+                $template->set('selected', $animals->count_tri(array('categorie' => $categorie, 'type' => $type)));
                 $template->set('category', $this->params[0]);
                 $template->set('cpt', 0);
-                $template->set('animals', $animals->tri(array('categorie' => $categorie),$this->page_selected()));
+                $template->set('animals', $animals->tri(array('categorie' => $categorie, 'type' => $type),$this->page_selected()));
             
                 break;
 
