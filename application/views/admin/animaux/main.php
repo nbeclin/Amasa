@@ -14,9 +14,7 @@
 		<div class="col-md-2">
 			<select name="categorie" class="form-control">
 				<option value="">-- Choisir --</option>
-				<option value="adoptionChaton" <?php echo ($post['categorie'] == 'adoptionChaton') ? 'selected' : ''; ?>>Adoption Chaton</option>
-				<option value="adoptionChat" <?php echo ($post['categorie'] == 'adoptionChat') ? 'selected' : ''; ?>>Adoption Chat</option>
-				<option value="adoptionChien" <?php echo ($post['categorie'] == 'adoptionChien') ? 'selected' : ''; ?>>Adoption Chien</option>
+				<option value="adoption" <?php echo ($post['categorie'] == 'adoption') ? 'selected' : ''; ?>>Adoption</option>
 				<option value="adopte" <?php echo ($post['categorie'] == 'adopte') ? 'selected' : ''; ?>>Adopté</option>
 				<option value="paradis" <?php echo ($post['categorie'] == 'paradis') ? 'selected' : ''; ?>>Paradis</option>
 			</select>
@@ -39,6 +37,7 @@
         <tr>
             <th class="text-center"></th>
             <th class="text-center">Animaux</th>
+            <th class="text-center">Type</th>
             <th class="text-center">Catégories</th>
             <th class="text-center"></th>
             <th class="text-center"></th>
@@ -63,6 +62,9 @@
 				</td>
 				<td class="text-center">
 					<a href="<?php echo $animal->id ?>"><?php echo $animal->nom ?></a>
+				</td>
+				<td class="text-center">
+					<?php echo $animal->type ?>
 				</td>
 				<td class="text-center">
 					<?php echo $animal->categorie ?>

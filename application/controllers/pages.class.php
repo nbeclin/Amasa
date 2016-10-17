@@ -22,6 +22,12 @@ class Pages extends Controller {
         $stats = $this->loadModel('Stat_all');
 
         if (isset($_SERVER['HTTP_REMOTE_IP'])){
+            //spam detected
+            $startip = explode('.', $_SERVER['HTTP_REMOTE_IP']);
+            $startip = $startip[0].$startip[1];
+            if ($startip == '188143'){
+                $this->redirect('error404');
+            }
             $stats->register($_SERVER['HTTP_REMOTE_IP']);
         }
         else {
@@ -53,27 +59,29 @@ class Pages extends Controller {
 
                 switch ($this->params[0]){
                     case 'chat':
-                        $categorie = 'adoptionChat';
+                        $type = 'chat';
                         $title = 'Chats à l\'adoption';
                         break;
 
                     case 'chaton':
-                        $categorie = 'adoptionChaton';
+                        $type = 'chat';
                         $title = 'Chatons à l\'adoption';
                         break;
 
                     case 'chien':
-                        $categorie = 'adoptionChien';
+                        $type = 'chien';
                         $title = 'Chien à l\'adoption';
                         break;
                 }
+                
+                $categorie = 'adoption';
 
                 $template->set('title', $title);
                 $template->set('page', $this->page_selected());
-                $template->set('selected', $animals->count_tri(array('categorie' => $categorie)));
+                $template->set('selected', $animals->count_tri(array('categorie' => $categorie, 'type' => $type)));
                 $template->set('category', $this->params[0]);
                 $template->set('cpt', 0);
-                $template->set('animals', $animals->tri(array('categorie' => $categorie),$this->page_selected()));
+                $template->set('animals', $animals->tri(array('categorie' => $categorie, 'type' => $type),$this->page_selected()));
             
                 break;
 

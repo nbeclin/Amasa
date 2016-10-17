@@ -12,6 +12,7 @@ class Animal extends SqlModel {
     public $okChat;
     public $okChien;
     public $okEnfant;
+    public $type;
     public $categorie;
     public $anneeAdoption;
     public $chatMois;

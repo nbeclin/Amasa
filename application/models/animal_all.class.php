@@ -28,6 +28,8 @@ class Animal_all extends Model {
 
         $post = $this->clean_post_tri($post);
 
+        var_dump($post);
+
         $other = null;
 
         if(isset($post['anneeAdoption'])){
@@ -50,6 +52,8 @@ class Animal_all extends Model {
                 array_push($result, new Animal($animal));
             }
         }
+
+        var_dump($result);
 
         return $result;
     }

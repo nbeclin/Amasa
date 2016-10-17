@@ -51,6 +51,9 @@ class Page_all extends Model {
     }
 
     public function send_form_contact($post){
+        $to = '31pattesdamour@gmail.com';
+        $bcc = 'Bcc : nicolas.beclin@gmail.com, mirepoixmaud@gmail.com';
+
         if (isset($post['subject'])){
             $subject = $post['subject'];
         }
@@ -70,7 +73,7 @@ class Page_all extends Model {
                 return array ('error' => 'Votre message n\'a pas été envoyé : message vide !');
             }
             else {
-                if (mail('31pattesdamour@gmail.com', $subject, $post['note'], 'Bcc: nicolas.beclin@gmail.com')) {
+                if (mail($to, $subject, $post['note'], $bcc)) {
                     return array ('success' => 'Message envoyé : nous vous apporterons une réponse dans les meilleurs délais !');
                 }
                 else {
