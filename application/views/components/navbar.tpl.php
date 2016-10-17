@@ -60,3 +60,22 @@
 		</div>
 	</div>
 </div>
+
+<a href="https://www.teaming.net/31pattesd-amour-amasa-grupo" target="_blank">
+	<div class="row teaming" >
+		<div class="col-md-5">
+			<img src="/<?php echo BASE_URL ?>img/logo80.png"
+					alt="" title="" class="img-responsive" />	
+		</div>
+		<div class="col-md-7">
+			<p class="text-center">Donne 1 euro par mois &agrave; notre Groupe Teaming</p>
+		</div>
+		<div class="col-md-12">
+			<img	src="https://djg5cfn4h6wcu.cloudfront.net/resources/images/logo_p.png"
+					alt="Logo Teaming" title="Logo Teaming" class="img-responsive">
+		</div>
+		<div class="col-md-12">.
+			<a href="https://www.teaming.net/31pattesd-amour-amasa-grupo" class="btn btn-primary btn-block active" role="button" onclick="prevent_propagation_widget(event,'https://www.teaming.net/31pattesd-amour-amasa-grupo')">Rejoins notre Groupe</a>
+		</div>
+	</div>
+</a>
