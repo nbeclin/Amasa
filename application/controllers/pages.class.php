@@ -64,7 +64,7 @@ class Pages extends Controller {
                         break;
 
                     case 'chaton':
-                        $type = 'chat';
+                        $type = 'chaton';
                         $title = 'Chatons à l\'adoption';
                         break;
 

@@ -25,20 +25,34 @@ class Animal_all extends Model {
     */
     public function tri($post, $page=null){
         $result = array();
+        $other = '';
+
+        if (isset($post['type'])){
+            switch ($post['type']) {
+                case 'chaton':
+                    $other = 'AND age >= "'.$this->ageChaton().'" ';
+                    $post['type'] = 'chat';
+                    break;
+
+                case 'chat':
+                    $other = 'AND age < "'.$this->ageChaton().'" OR age IS NULL ';
+                    break;
+                
+                default:
+                    $other = null;
+                    break;
+            }
+        }
+        
 
         $post = $this->clean_post_tri($post);
 
-        var_dump($post);
-
-        $other = null;
-
         if(isset($post['anneeAdoption'])){
-            $other = 'AND anneeAdoption LIKE "%'.$post['anneeAdoption'].'%" ORDER BY nom';
+            $other .= 'AND anneeAdoption LIKE "%'.$post['anneeAdoption'].'%" ';
             unset($post['anneeAdoption']);
         }
-        else {
-            $other = 'ORDER BY nom';
-        }
+        
+        $other .= 'ORDER BY nom ';
 
         if (!empty($post)) {
             foreach($this->selectAllLimit('animal', '*', $post, $other, $page) as $animal){
@@ -52,8 +66,6 @@ class Animal_all extends Model {
                 array_push($result, new Animal($animal));
             }
         }
-
-        var_dump($result);
 
         return $result;
     }
@@ -280,6 +292,18 @@ class Animal_all extends Model {
                 }
         }
         
+        return $result;
+    }
+
+    /** 
+    * Function ageChaton - Age format
+    * @param $date - datetime format
+    * @return $result - 8 mounths earlier
+    */
+    private function ageChaton() {      
+        $datenow = new DateTime("now");
+        $result = date('Y-m-d', strtotime('-242 day')); //-8 mois
+
         return $result;
     }
 }
