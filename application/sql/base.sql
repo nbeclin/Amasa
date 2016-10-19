@@ -416,7 +416,7 @@ ALTER TABLE `photo`
 
 
 
-CREATE TABLE IF NOT EXISTS `SOUS_page` (
+CREATE TABLE IF NOT EXISTS `sous_page` (
   `id` int(11) NOT NULL,
   `idPage` int(11) NOT NULL,
   `libelle` varchar(30) NOT NULL,
