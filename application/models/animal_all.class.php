@@ -35,7 +35,7 @@ class Animal_all extends Model {
                     break;
 
                 case 'chat':
-                    $other = 'AND age < "'.$this->ageChaton().'" OR age IS NULL ';
+                    $other = 'AND age < "'.$this->ageChaton().'" OR (age IS NULL AND categorie = "adoption") ';
                     break;
                 
                 default:
@@ -87,23 +87,42 @@ class Animal_all extends Model {
     */
     public function count_tri($post){
         $result = 0;
+        $other = '';
+
+        if (isset($post['type'])){
+            switch ($post['type']) {
+                case 'chaton':
+                    $other = 'AND age >= "'.$this->ageChaton().'" ';
+                    $post['type'] = 'chat';
+                    break;
+
+                case 'chat':
+                    $other = 'AND age < "'.$this->ageChaton().'" OR (age IS NULL AND categorie = "adoption") ';
+                    break;
+                
+                default:
+                    $other = null;
+                    break;
+            }
+        }
+        
 
         $post = $this->clean_post_tri($post);
 
-        $other = null;
-
         if(isset($post['anneeAdoption'])){
-            $other = 'AND anneeAdoption LIKE "%'.$post['anneeAdoption'].'%"';
+            $other .= 'AND anneeAdoption LIKE "%'.$post['anneeAdoption'].'%" ';
             unset($post['anneeAdoption']);
         }
+        
+        $other .= 'ORDER BY nom ';
 
         if (!empty($post)) {
-            foreach($this->selectAll('animal', '*', $post, $other) as $animal){
+            foreach($this->selectAllLimit('animal', '*', $post, $other) as $animal){
                 $result++;
             }
         }
         else {
-            foreach($this->selectAll('animal', '*') as $animal){
+            foreach($this->selectAllLimit('animal', '*', null, null) as $animal){
                 $result++;
             }
         }
