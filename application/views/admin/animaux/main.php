@@ -9,19 +9,26 @@
 
 <form action="" class="form" method="post" enctype="multipart/form-data" style="margin-bottom:10px">
 	<div class="row">
-		<div class="col-md-7">
+		<div class="col-md-5">
 		</div>
 		<div class="col-md-2">
 			<select name="categorie" class="form-control">
-				<option value="">-- Choisir --</option>
+				<option value="">-- Catégorie --</option>
 				<option value="adoption" <?php echo ($post['categorie'] == 'adoption') ? 'selected' : ''; ?>>Adoption</option>
 				<option value="adopte" <?php echo ($post['categorie'] == 'adopte') ? 'selected' : ''; ?>>Adopté</option>
 				<option value="paradis" <?php echo ($post['categorie'] == 'paradis') ? 'selected' : ''; ?>>Paradis</option>
 			</select>
 		</div>
 		<div class="col-md-2">
+			<select name="type" class="form-control">
+				<option value="">-- Type --</option>
+				<option value="chat" <?php echo ($post['type'] == 'chat') ? 'selected' : ''; ?>>Chat</option>
+				<option value="chien" <?php echo ($post['type'] == 'chien') ? 'selected' : ''; ?>>Chien</option>
+			</select>
+		</div>
+		<div class="col-md-2">
 			<select name="sexe" class="form-control">
-				<option value="">-- Choisir --</option>
+				<option value="">-- Sexe --</option>
 				<option value="1" <?php echo ($post['sexe'] == '1') ? 'selected' : ''; ?>>Male</option>
 				<option value="2" <?php echo ($post['sexe'] == '2') ? 'selected' : ''; ?>>Femelle</option>
 			</select>
