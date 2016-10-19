@@ -6,3 +6,5 @@ UPDATE `animal` SET `type` = 'chat' WHERE `categorie` = 'adoptionChaton';
 UPDATE `animal` SET `categorie` = 'adoption' WHERE `categorie` = 'adoptionChat';
 UPDATE `animal` SET `categorie` = 'adoption' WHERE `categorie` = 'adoptionChaton';
 UPDATE `animal` SET `categorie` = 'adoption' WHERE `categorie` = 'adoptionChien';
+
+UPDATE `animal` SET `type` = 'chat' WHERE `categorie` = 'adopte';
