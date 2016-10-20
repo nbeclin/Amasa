@@ -3,25 +3,23 @@ class User_all extends Model {
     public $all = array();
     private $admin_grade = 1;
     public $user_per_page = 20;
+   
     public function load_one($id){
         $user = new User($this->selectOne('user', '*', array('id' => (int)$id)));
-        $user->is_admin = $this->is_admin($user);
         return $user;
     }
-    public function load_all($id){
+    
+    public function load_all(){
+        $results = array();
+
         foreach($this->selectAll('user', '*') as $user){
-            $user->is_admin = $this->is_admin($user);
-            array_push($this->all, new User($user));
+            array_push($results, new User($user));
         }
+
+        return $results;
     }
-    private function is_admin($user){
-        if ($user->is_admin == $this->admin_grade){
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
+   
+
     public function login($post){
         $errors = $this->checkData($post, true);
         if(!empty($errors)){

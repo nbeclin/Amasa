@@ -32,6 +32,9 @@
                     <li class="<?php echo $nav == 'stats' ? 'active' : ''; ?>">
                         <a href="/<?php echo BASE_URL; ?>admin/stats"><span class="glyphicon glyphicon-stats"></span></a>
                     </li>
+                    <li class="<?php echo $nav == 'users' ? 'active' : ''; ?>">
+                        <a href="/<?php echo BASE_URL; ?>admin/users">Utilisateurs</a>
+                    </li>
                     <li class="<?php echo $nav == 'logout' ? 'active' : ''; ?>">
                         <a href="/<?php echo BASE_URL; ?>admin/logout"><span class="glyphicon glyphicon-user" style="color:#088A29;"></span> <span style="color:#088A29;"><?php echo $user->login ?></span> <span class="glyphicon glyphicon-log-out"></span></a>
                     </li>
