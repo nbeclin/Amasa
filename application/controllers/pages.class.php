@@ -57,6 +57,8 @@ class Pages extends Controller {
 
                 $template->set('pet_of_the_month', $animals->pet_of_the_month());
 
+                $error_type = false;
+
                 switch ($this->params[0]){
                     case 'chat':
                         $type = 'chat';
@@ -72,16 +74,26 @@ class Pages extends Controller {
                         $type = 'chien';
                         $title = 'Chien à l\'adoption';
                         break;
+
+                    default:
+                        $error_type = true;
                 }
                 
-                $categorie = 'adoption';
+                if($error_type == true){
+                    $template = $this->loadView('error404');
+                    $template->set('title', 'ERREUR 404');
+                    $template->set('nav', null);
+                }
+                else {
+                    $categorie = 'adoption';
 
-                $template->set('title', $title);
-                $template->set('page', $this->page_selected());
-                $template->set('selected', $animals->count_tri(array('categorie' => $categorie, 'type' => $type)));
-                $template->set('category', $this->params[0]);
-                $template->set('cpt', 0);
-                $template->set('animals', $animals->tri(array('categorie' => $categorie, 'type' => $type),$this->page_selected()));
+                    $template->set('title', $title);
+                    $template->set('page', $this->page_selected());
+                    $template->set('selected', $animals->count_tri(array('categorie' => $categorie, 'type' => $type)));
+                    $template->set('category', $this->params[0]);
+                    $template->set('cpt', 0);
+                    $template->set('animals', $animals->tri(array('categorie' => $categorie, 'type' => $type),$this->page_selected()));
+                }
             
                 break;
 
