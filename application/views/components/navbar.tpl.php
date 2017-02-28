@@ -8,6 +8,7 @@
 		<li class="ss-bt 2-2"><a href="/<?php echo BASE_URL ?>pages/adoption/chaton">Chatons</a></li>
 		<li class="ss-bt 2-2"><a href="/<?php echo BASE_URL ?>pages/adoption/chien">Chiens</a></li>
 	<li class="active 3-1"><a href="#"><span class="gras">Les adoptés</span></a></li>
+		<li class="ss-bt 3-2"><a href="/<?php echo BASE_URL ?>pages/adopte/2016">2017</a></li>
 		<li class="ss-bt 3-2"><a href="/<?php echo BASE_URL ?>pages/adopte/2016">2016</a></li>
 		<li class="ss-bt 3-2"><a href="/<?php echo BASE_URL ?>pages/adopte/2015">2015</a></li>
 		<li class="ss-bt 3-2"><a href="/<?php echo BASE_URL ?>pages/adopte/2014">2014</a></li>
