@@ -79,7 +79,6 @@
                 <h3>
                     <span class ="<?php echo ($animal->sexe == 1) ? 'bleu' : 'rose' ?> gras"><?php echo $animal->nom ?></span>
                 </h3>
-                <p class="justifie"><?php echo substr($animal->commentaire,0,150) ?>...</p>
             </div>		
 		<?php if ($cpt % 3 == 2) : ?>
 		</div>
