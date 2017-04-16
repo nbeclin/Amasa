@@ -111,6 +111,26 @@ class Pages extends Controller {
             
                 break;
 
+            case 'paradis':
+                $template = $this->loadView('front/pages/paradis');
+                $template->set('nav', 'main');
+
+                $template->set('pet_of_the_month', $animals->pet_of_the_month());
+
+                $categorie = 'adoption';
+
+                $template->set('title', 'Les Anges d\'Amasa');
+                $template->set('page', $this->page_selected());
+                $template->set('selected', $animals->count_tri(array(
+                    'paradis' => '1'
+                    )));
+                $template->set('cpt', 0);
+                $template->set('animals', $animals->tri(array(
+                    'paradis' => '1'
+                    ),$this->page_selected()));
+            
+                break;
+
             case 'parrainer' :
                 $pages = $this->loadModel('Page_all');
                 $load_page = $pages->load_one_by_label($action, 'page');
