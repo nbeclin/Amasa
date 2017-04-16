@@ -1,0 +1,2 @@
+ALTER TABLE `animal` CHANGE `moins` `moins` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
+ALTER TABLE `animal` CHANGE `plus` `plus` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
