@@ -106,7 +106,7 @@
 						</div>
 						<div class="radio">
 							<label>
-								<input type="radio" name="okChat" value="2" <?php echo $info_animal->okChat == '2' ? 'checked' : ''; ?>>
+								<input type="radio" name="okChat" value="2" <?php echo ($info_animal->okChat == '2' || $info_animal->okChat == null) ? 'checked' : ''; ?>>
 								?
 							</label>
 						</div>
@@ -129,7 +129,7 @@
 						</div>
 						<div class="radio">
 							<label>
-								<input type="radio" name="okChien" value="2" <?php echo $info_animal->okChien == '2' ? 'checked' : ''; ?>>
+								<input type="radio" name="okChien" value="2" <?php echo ($info_animal->okChien == '2' || $info_animal->okChien == null) ? 'checked' : ''; ?>>
 								?							
 							</label>
 						</div>
@@ -152,7 +152,7 @@
 						</div>
 						<div class="radio">
 							<label>
-								<input type="radio" name="okEnfant" value="2" <?php echo $info_animal->okEnfant == '2' ? 'checked' : ''; ?>>
+								<input type="radio" name="okEnfant" value="2" <?php echo ($info_animal->okEnfant == '2' || $info_animal->okEnfant == null) ? 'checked' : ''; ?>>
 								?
 							</label>
 						</div>
