@@ -119,8 +119,10 @@
 										</p></h5>
 									</div>
 								</div>
+								<!-- Suppression le 16/04/2017 demandeur : Maud
 								<h5><p><span class="gras">Son petit + : </span><?php echo $animal->plus ?></p></h5>
 								<h5><p><span class="gras">Son petit - : </span><?php echo $animal->moins ?></p></h5>
+								-->
 								<h5><p><?php echo $animal->commentaire ?></p></h5>
 							</div>
 						</div>

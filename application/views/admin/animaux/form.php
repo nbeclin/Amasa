@@ -159,6 +159,7 @@
 					</div>
 				</div>
 			</div>
+			<!-- Suppression le 16/04/2017 demandeur : Maud
 			<div class="form-group">
 				<label class="control-label">Petit plus</label>
 				<textarea name="plus" class="form-control" rows="5"><?php echo $info_animal->plus ?></textarea>
@@ -167,6 +168,7 @@
 				<label class="control-label">Petit moins</label>
 				<textarea name="moins" class="form-control" rows="5"><?php echo $info_animal->moins ?></textarea>
 			</div>
+			-->
 		</div>
 		<div class="col-md-4">
 			<div class="form-group">                    
