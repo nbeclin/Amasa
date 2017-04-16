@@ -31,7 +31,6 @@
 					<option value="">-- Choisir --</option>
 					<option value="adoption" <?php echo $info_animal->categorie == 'adoption' ? 'selected' : ''; ?>>Adoption</option>
 					<option value="adopte" <?php echo $info_animal->categorie == 'adopte' ? 'selected' : ''; ?>>Adopté</option>
-					<option value="paradis" <?php echo $info_animal->categorie == 'paradis' ? 'selected' : ''; ?>>Paradis</option>
 				</select>
 			</div>
 			<div class="form-group">
@@ -75,6 +74,21 @@
                     </span>
             	</div>
 			</div>
+			<div class="form-group">
+						<label class="control-label">Paradis</label>
+						<div class="radio">
+							<label>
+								<input type="radio" name="paradis" value="1" <?php echo $info_animal->paradis == '1' ? 'checked' : ''; ?>>
+								Oui
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio" name="paradis" value="0" <?php echo $info_animal->paradis != '1' ? 'checked' : ''; ?>>
+								Non
+							</label>
+						</div>
+					</div>
 			<div class="form-group">
 				<label class="control-label">Date d'adoption</label>
 				<div class="input-group date datetimepicker">

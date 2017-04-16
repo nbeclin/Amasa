@@ -5,6 +5,7 @@ class Animal extends SqlModel {
     public $nom;
     public $sexe;
     public $age;
+    public $paradis;
     public $soin;
     public $commentaire;
     public $plus;
