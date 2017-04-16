@@ -45,10 +45,16 @@ class Pages extends Controller {
 
                 $template->set('title', 'Adoptés en '.$this->params[0]);
                 $template->set('page', $this->page_selected());
-                $template->set('selected', $animals->count_tri(array('categorie' => 'adopte', 'anneeAdoption' => $this->params[0])));
+                $template->set('selected', $animals->count_tri(array(
+                    'categorie' => 'adopte', 
+                    'anneeAdoption' => $this->params[0]
+                    )));
                 $template->set('year', $this->params[0]);
                 $template->set('cpt', 0);
-                $template->set('animals', $animals->tri(array('categorie' => 'adopte', 'anneeAdoption' => $this->params[0]), $this->page_selected()));
+                $template->set('animals', $animals->tri(array(
+                    'categorie' => 'adopte', 
+                    'anneeAdoption' => $this->params[0]
+                    ), $this->page_selected()));
                 break;
 
             case 'adoption':
@@ -89,10 +95,18 @@ class Pages extends Controller {
 
                     $template->set('title', $title);
                     $template->set('page', $this->page_selected());
-                    $template->set('selected', $animals->count_tri(array('categorie' => $categorie, 'type' => $type)));
+                    $template->set('selected', $animals->count_tri(array(
+                        'categorie' => $categorie, 
+                        'type' => $type, 
+                        'paradis' => '0'
+                        )));
                     $template->set('category', $this->params[0]);
                     $template->set('cpt', 0);
-                    $template->set('animals', $animals->tri(array('categorie' => $categorie, 'type' => $type),$this->page_selected()));
+                    $template->set('animals', $animals->tri(array(
+                        'categorie' => $categorie, 
+                        'type' => $type, 
+                        'paradis' => '0'
+                        ),$this->page_selected()));
                 }
             
                 break;

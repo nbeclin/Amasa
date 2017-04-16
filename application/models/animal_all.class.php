@@ -43,7 +43,6 @@ class Animal_all extends Model {
                     break;
             }
         }
-        
 
         $post = $this->clean_post_tri($post);
 
