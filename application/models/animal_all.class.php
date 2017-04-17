@@ -136,6 +136,7 @@ class Animal_all extends Model {
     */
     public function load_one($id){
         $animal = new Animal($this->selectOne('animal', '*', array('id' => $id)));
+        $animal->age_text = $this->interval($animal->age);
         $animal->age = $this->date_conversion_fr($animal->age);
         $animal->anneeAdoption = $this->date_conversion_fr($animal->anneeAdoption);
         return $animal;

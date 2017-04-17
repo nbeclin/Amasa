@@ -117,8 +117,6 @@ class Pages extends Controller {
 
                 $template->set('pet_of_the_month', $animals->pet_of_the_month());
 
-                $categorie = 'adoption';
-
                 $template->set('title', 'Les Anges d\'Amasa');
                 $template->set('page', $this->page_selected());
                 $template->set('selected', $animals->count_tri(array(
@@ -149,6 +147,23 @@ class Pages extends Controller {
                 $template->set('cpt', 0);
                 $template->set('animals', $animals->tri(array('parrainage' => '1')));
                 $template->set('parrainer', true);
+                break;
+
+            case 'social' :
+                $template = $this->loadView('front/pages/social');
+                $template->set('nav', 'main');
+
+                $template->set('pet_of_the_month', $animals->pet_of_the_month());
+
+                if($animals->load_one($this->params[0])->id == null){
+                    $template = $this->loadView('error404');
+                    $template->set('title', 'ERREUR 404');
+                    $template->set('nav', null);
+                }
+                else {
+                    $template->set('animal', $animals->load_one($this->params[0]));
+                }
+            
                 break;
 
     		default:
