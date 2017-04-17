@@ -17,7 +17,7 @@ class Photo_all extends Model {
     }
 
     private function load_all(){
-        foreach($this->selectAll('photo', '*', null, 'ORDER BY lien') as $photo){
+        foreach($this->selectAll('photo, animal', 'photo.id, photo.idAnimal, photo.lien, photo.premiere, animal.categorie AS animal_categorie', null, 'WHERE photo.idAnimal = animal.id ORDER BY lien') as $photo){
             array_push($this->all, new Photo($photo));
         }
     }

@@ -15,8 +15,9 @@
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
-            <th class="text-center">Photos</th>
+            <th class="text-center">Photo</th>
             <th class="text-center">lien</th>
+            <th class="text-center">Utilisé</th>
             <th class="text-center"></th>
             <th class="text-center"></th>
         </tr>
@@ -27,9 +28,18 @@
 				<td class="text-center">
 					<img src="/<?php echo BASE_URL ?>img/animaux/00-<?php echo $photo->lien ?>" alt="Amasa" height="30" />
 				</td>
-				<td class="text-center">
-					<?php echo $photo->lien ?>
-				</td>
+                <td class="text-center">
+                    <?php echo $photo->lien ?>
+                </td>
+                <?php if($photo->premiere == 0 && $photo->animal_categorie == 'adopte'): ?>
+                    <td class="text-center">
+                        <span class="glyphicon glyphicon-thumbs-down" style="color:#FE2E2E;"></span>
+                    </td>
+                <?php else: ?>
+                    <td class="text-center">
+                        <span class="glyphicon glyphicon-hand-right" style="color:#088A29;"></span>
+                    </td>
+                <?php endif; ?>
 				<td class="text-center">
 					<a href="/<?php echo BASE_URL ?>admin/photos/modify/<?php echo $photo->id ?>"><span class="glyphicon glyphicon-pencil" style="color:#AEB404;"></span></a>
 				</td>

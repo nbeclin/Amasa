@@ -5,6 +5,7 @@ class Photo extends SqlModel {
     public $idAnimal;
     public $lien;
     public $premiere;
+    public $animal_categorie;
 
     /**
      * Load object properties
