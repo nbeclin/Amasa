@@ -185,6 +185,7 @@ class Pages extends Controller {
         $template->set('pictures', $this->load_banner_photo());
         $template->set('static', $this->staticFiles);
         $template->addCss('style', 'css');
+        $template->addJs('facebook-share', 'js');
 
         $template->set('result_form_contact', $result_form_contact);
         $template->set('pet_of_the_month', $animals->pet_of_the_month());

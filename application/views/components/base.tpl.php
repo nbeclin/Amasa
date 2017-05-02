@@ -3,6 +3,13 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php if (isset($animal)) : ?>
+        <meta property="fb:app_id"        content="655080841366922" />
+        <meta property="og:url"           content="http://31pattesdamour.fr/pages/social/<?php echo $animal->id ?>" />
+        <meta property="og:type"          content="website" />
+        <meta property="og:title"         content="31 Pattes d'Amour" />
+        <meta property="og:description"   content="<?php echo $animal->commentaire ?>" />
+    <?php endif ?> 
     <title><?php echo $title; ?></title>
     <?php include 'css.tpl.php'; ?>
 </head>
