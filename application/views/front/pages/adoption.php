@@ -75,6 +75,7 @@
 									</div>
 									<div class="col-md-1"></div>
 								</div>
+								<div class="fb-share-button" data-href="http://31pattesdamour.fr/pages/social/<?php echo $animal->id ?>" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F31pattesdamour.fr%2Fpages%2Fsocial%2F280&amp;src=sdkpreparse">Partager</a></div>
 								<h5><p><span class="gras">Soins : </span><?php echo $animal->soin ?></p></h5>
 								<div class="row">
 									<div class="col-md-4">

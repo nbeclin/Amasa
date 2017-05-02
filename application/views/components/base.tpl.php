@@ -8,9 +8,9 @@
         <meta property="og:url"           content="http://31pattesdamour.fr/pages/social/<?php echo $animal->id ?>" />
         <meta property="og:type"          content="website" />
         <meta property="og:title"         content="31 Pattes d'Amour" />
-        <meta property="og:description"   content="<?php echo $animal->commentaire ?>" />
+        <meta property="og:description"   content="<?php echo strip_tags($animal->commentaire) ?>" />
         <?php if (isset($animal->photos[0]->lien)) : ?>
-            <meta property="og:image"   content="http://31pattesdamour.fr/img/animaux/<?php echo $animal->photos[0]->lien ?>" /> 
+            <meta property="og:image"   content="http://31pattesdamour.fr/img/animaux/<?php echo str_replace(' ', '%20', $animal->photos[0]->lien) ?>" /> 
         <?php endif ?>
     <?php endif ?> 
     <title><?php echo $title; ?></title>
