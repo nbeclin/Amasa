@@ -9,6 +9,9 @@
         <meta property="og:type"          content="website" />
         <meta property="og:title"         content="31 Pattes d'Amour" />
         <meta property="og:description"   content="<?php echo $animal->commentaire ?>" />
+        <?php if (isset($animal->photos[0]->lien)) : ?>
+            <meta property="og:image"   content="http://31pattesdamour.fr/img/animaux/<?php echo $animal->photos[0]->lien ?>" /> 
+        <?php endif ?>
     <?php endif ?> 
     <title><?php echo $title; ?></title>
     <?php include 'css.tpl.php'; ?>
