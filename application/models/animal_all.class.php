@@ -321,7 +321,7 @@ class Animal_all extends Model {
     */
     private function ageChaton() {      
         $datenow = new DateTime("now");
-        $result = date('Y-m-d', strtotime('-242 day')); //-8 mois
+        $result = date('Y-m-d', strtotime('-365 day')); //-12 mois
 
         return $result;
     }
