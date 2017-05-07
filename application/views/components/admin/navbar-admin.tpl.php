@@ -23,6 +23,9 @@
                     <li class="<?php echo $nav == 'pages' ? 'active' : ''; ?>">
                         <a href="/<?php echo BASE_URL; ?>admin/pages">Pages</a>
                     </li>
+                    <li class="<?php echo $nav == 'fichiers' ? 'active' : ''; ?>">
+                        <a href="/<?php echo BASE_URL; ?>admin/fichiers">Fichiers</a>
+                    </li>
                     <li class="<?php echo $nav == 'animaux' ? 'active' : ''; ?>">
                         <a href="/<?php echo BASE_URL; ?>admin/animaux">Animaux</a>
                     </li>

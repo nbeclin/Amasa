@@ -19,6 +19,18 @@ class Page_all extends Model {
         return $page;
     }
 
+
+    public function load_selected($pages){
+        $pages_selected = array();
+        foreach ($pages as $page) {
+            array_push(
+                $pages_selected, 
+                new Page($this->selectOne('page', 'id, titre', array('id' => $page), 'AND historique LIKE 0'))
+            );
+        }
+        return $pages_selected;
+    }
+
     public function load_one_by_label($label, $type){
         $page = new Page($this->selectOne($type, '*', array('libelle' => $label, 'historique' => '0')));
         return $page;
