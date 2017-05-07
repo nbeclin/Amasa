@@ -18,7 +18,7 @@
 				<input type="text" name="nom" class="form-control" value="<?php echo $info_animal->nom ?>" />
 			</div>
 			<div class="form-group">
-				<label class="control-label">Catégorie</label>
+				<label class="control-label">Type</label>
 				<select name="type" class="form-control">
 					<option value="">-- Choisir --</option>
 					<option value="chat" <?php echo $info_animal->type == 'chat' ? 'selected' : ''; ?>>Chat</option>
