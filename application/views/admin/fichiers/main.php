@@ -32,9 +32,9 @@
 			<tr class="fichier-line" data-fichier-id="<?php echo $fichier->id ?>">
 				<td class="text-center">
                     <?php if ($fichier->type == 'img') : ?>
-					   <img src="/<?php echo BASE_URL ?>/<?php echo $fichier->lien ?>" alt="Amasa" height="30" />
+					   <img src="/<?php echo BASE_URL ?><?php echo $fichier->lien ?>" alt="Amasa" height="30" />
                     <?php else : ?>
-                       <img src="/<?php echo BASE_URL ?>/<?php echo $fichier->type ?>" alt="Amasa" height="30" />
+                       <img src="/<?php echo BASE_URL ?><?php echo $fichier->type ?>" alt="Amasa" height="30" />
                     <?php endif; ?>
 				</td>
                 <td class="text-center">
