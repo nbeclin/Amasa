@@ -29,13 +29,13 @@
                 <div class="row">
                     <div class="col-md-7">
                         <div class="ekko-lightbox-container">
-                            <div id="carousel-example-generic<?php echo $pet_of_the_month->id ?>" class="carousel slide" data-ride="carousel">
+                            <div id="carousel-example-generic<?php echo $pet_of_the_month->id ?>petOfMonth" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
                                     <?php for($i=0;$i<sizeof($pet_of_the_month->photos);$i++) : ?>
                                         <?php if($i == 0) : ?>
-                                            <li data-target="#carousel-example-generic<?php echo $pet_of_the_month->id ?>" data-slide-to="<?php echo $i ?>" class="active"></li>
+                                            <li data-target="#carousel-example-generic<?php echo $pet_of_the_month->id ?>petOfMonth" data-slide-to="<?php echo $i ?>" class="active"></li>
                                         <?php else : ?>
-                                            <li data-target="#carousel-example-generic<?php echo $pet_of_the_month->id ?>" data-slide-to="<?php echo $i ?>"></li>
+                                            <li data-target="#carousel-example-generic<?php echo $pet_of_the_month->id ?>petOfMonth" data-slide-to="<?php echo $i ?>"></li>
                                         <?php endif; ?>
                                     <?php endfor; ?>
                                 </ol>
@@ -54,10 +54,10 @@
                                 </div>
 
                                 <!-- Controls -->
-                                <a class="left carousel-control" href="#carousel-example-generic<?php echo $pet_of_the_month->id ?>" data-slide="prev">
+                                <a class="left carousel-control" href="#carousel-example-generic<?php echo $pet_of_the_month->id ?>petOfMonth" data-slide="prev">
                                     <span class="glyphicon glyphicon-chevron-left"></span>
                                 </a>
-                                <a class="right carousel-control" href="#carousel-example-generic<?php echo $pet_of_the_month->id ?>" data-slide="next">
+                                <a class="right carousel-control" href="#carousel-example-generic<?php echo $pet_of_the_month->id ?>petOfMonth" data-slide="next">
                                     <span class="glyphicon glyphicon-chevron-right"></span>
                                 </a>
                             </div>
