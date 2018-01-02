@@ -82,7 +82,7 @@ class Photos extends Controller {
                 }
 
                 $photos = $this->loadModel('Photo_all');
-                $template->set('photos', $photos->all);
+                $template->set('photos', $photos->load_all());
                 break;
 
             default:
@@ -92,7 +92,7 @@ class Photos extends Controller {
                 $template->set('nav', 'photos');
 
                 $photos = $this->loadModel('Photo_all');
-                $template->set('photos', $photos->all);
+                $template->set('photos', $photos->load_all());
         }
 
         $user = $this->loadModel('User_all'); 

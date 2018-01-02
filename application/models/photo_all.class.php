@@ -13,15 +13,20 @@ class Photo_all extends Model {
 
     public function __construct(){
         parent::__construct();
-        $this->load_all();
     }
 
-    private function load_all(){
-        foreach($this->selectAll('photo, animal', 'photo.id, photo.idAnimal, photo.lien, photo.premiere, animal.categorie AS animal_categorie', null, 'WHERE photo.idAnimal = animal.id ORDER BY lien') as $photo){
-            array_push($this->all, new Photo($photo));
+    public function load_all(){
+        $pictures = array();
+        foreach($this->selectAll('photo', '*', null, 'ORDER BY lien') as $photo){
+            if($photo['idAnimal'] != 0){
+                $animal = $this->selectOne('animal', 'animal.categorie', array('id' => $photo['idAnimal']));
+                $photo['animal_categorie'] = $animal['categorie'];
+            }
+            array_push($pictures, new Photo($photo));
         }
+        return $pictures;
     }
-
+    
     public function load_all_By_id(){
         $pictures = array();
         foreach($this->selectAll('photo', '*', null, 'ORDER BY idAnimal, lien') as $photo){
