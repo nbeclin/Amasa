@@ -8,11 +8,12 @@
 		<li class="ss-bt 2-2"><a href="/<?php echo BASE_URL ?>pages/adoption/chaton">Chatons</a></li>
 		<li class="ss-bt 2-2"><a href="/<?php echo BASE_URL ?>pages/adoption/chien">Chiens</a></li>
 	<li class="active 3-1"><a href="#"><span class="gras">Les adoptés</span></a></li>
-		<li class="ss-bt 3-2"><a href="/<?php echo BASE_URL ?>pages/adopte/2017">2017</a></li>
-		<li class="ss-bt 3-2"><a href="/<?php echo BASE_URL ?>pages/adopte/2016">2016</a></li>
-		<li class="ss-bt 3-2"><a href="/<?php echo BASE_URL ?>pages/adopte/2015">2015</a></li>
-		<li class="ss-bt 3-2"><a href="/<?php echo BASE_URL ?>pages/adopte/2014">2014</a></li>
-		<li class="ss-bt 3-2"><a href="/<?php echo BASE_URL ?>pages/adopte/2013">2013</a></li>
+		<?php
+			for ($i=date("Y"); $i >= 2013 ; $i--) 
+			{
+				echo '<li class="ss-bt 3-2"><a href="/' . BASE_URL . 'pages/adopte/' . $i . '">' . $i . '</a></li>';
+			}
+		?>
 	<li class="active 8-1"><a href="/<?php echo BASE_URL ?>pages/paradis"><span class="gras">Les Anges d'Amasa</span></a></li>
 	<li class="active 4-1"><a href="#"><span class="gras">Adopter un animal</span></a></li>
 		<li class="ss-bt 4-2"><a href="/<?php echo BASE_URL ?>pages/condAdoption">Conditions</a></li>
